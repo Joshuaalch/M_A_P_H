@@ -64,6 +64,7 @@
 
 <!-- Scripts para manejar el menú desplegable -->
 @section('scripts')
+@stack('styles')
 <script>
   // Obtener elementos del DOM
   const profileMenuButton = document.getElementById('profile-menu-button');
