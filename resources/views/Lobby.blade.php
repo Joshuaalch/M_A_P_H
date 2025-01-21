@@ -1,104 +1,185 @@
-@extends('layouts.app')
-
-@section('content')
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi App</title>
-  <!-- Tailwind CSS desde CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>MAPH</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="{{ asset('storage/img/apple-icon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/img/favicon.ico') }}">
+
+    <link rel="stylesheet" href="{{ asset('storage/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('storage/css/templatemo.css') }}">
+    <link rel="stylesheet" href="{{ asset('storage/css/custom.css') }}">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="{{ asset('storage/css/fontawesome.min.css') }}">
 </head>
-<body class="bg-gray-100">
-  <!-- Barra de navegación -->
-  <nav class="bg-white shadow-lg">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-between">
-        <div class="flex space-x-7">
-          <a href="/" class="flex items-center py-4 px-2">
-            <span class="font-semibold text-gray-500 text-lg">MAPH</span>
-          </a>
-        </div>
-        <div class="hidden md:flex items-center space-x-1">
-          <a
-            href="/funcionalidad1"
-            class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300"
-          >
-            Funcionalidad 1
-          </a>
-          <a
-            href="/funcionalidad2"
-            class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300"
-          >
-            Funcionalidad 2
-          </a>
-          <a
-            href="/funcionalidad3"
-            class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300"
-          >
-            Funcionalidad 3
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Sección principal (Hero) -->
-  <section class="bg-gray-100 py-20">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-5xl font-bold text-gray-800 mb-6">Bienvenido a Mi App</h1>
-      <p class="text-xl text-gray-600 mb-8">
-        Una solución moderna y minimalista para tus necesidades.
-      </p>
-      <a
-        href="/funcionalidad1"
-        class="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
-      >
-        Comenzar
-      </a>
-    </div>
-  </section>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light shadow py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="{{ asset('storage/img/logo1.png') }}" alt="Logo MAPH" style="width: 100px; height: auto;">
+        </a>
 
-  <!-- Funcionalidades destacadas -->
-  <section class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Funcionalidades Principales</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Funcionalidad 1</h3>
-          <p class="text-gray-600">Descripción breve de la funcionalidad 1.</p>
-        </div>
-        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Funcionalidad 2</h3>
-          <p class="text-gray-600">Descripción breve de la funcionalidad 2.</p>
-        </div>
-        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Funcionalidad 3</h3>
-          <p class="text-gray-600">Descripción breve de la funcionalidad 3.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- Botón de menú para dispositivos móviles -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <!-- Pie de página -->
-  <footer class="bg-gray-800 text-white py-8">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center">
-        <p class="text-sm">
-          &copy; <span id="year"></span> Mi App. Todos los derechos reservados.
-        </p>
-      </div>
-    </div>
-  </footer>
+        <!-- Menú de navegación -->
+        <div class="collapse navbar-collapse justify-content-center" id="templatemo_main_nav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">Información</a>
+                </li>
+            </ul>
+        </div>
 
-  <!-- Script para el año actual -->
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+        <!-- Contenedor de íconos (notificaciones y perfil) -->
+        <div class="d-flex align-items-center">
+            <!-- Campana de notificaciones -->
+            <div class="nav-item dropdown me-3">
+                <a class="nav-icon position-relative text-decoration-none d-flex align-items-center justify-content-center" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 35px; height: 35px; border-radius: 50%; background-color: #f0f0f0;">
+                    <i class="fas fa-bell text-dark"></i>
+                    <!-- Indicador de notificaciones no leídas -->
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
+                        1 <!-- Número de notificaciones no leídas -->
+                        <span class="visually-hidden">Notificaciones no leídas</span>
+                    </span>
+                </a>
+                <!-- Menú desplegable de notificaciones -->
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+                    <a class="dropdown-item" href="#">Nueva solicitud recibida</a>
+                </div>
+            </div>
+
+            <!-- Ícono de perfil -->
+            <div class="nav-item dropdown">
+                <a class="nav-icon position-relative text-decoration-none d-flex align-items-center justify-content-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 35px; height: 35px; border-radius: 50%; background-color: #f0f0f0;">
+                    @auth
+                        <span class="text-dark">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                    @else
+                        <i class="fa fa-fw fa-user text-dark"></i>
+                    @endauth
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                        Editar Perfil
+                    </a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Cerrar Sesión
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+ <!-- Start Featured Product -->
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Funcionalidades</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Tarjeta de Solicitudes -->
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-clipboard-list fa-2x mb-3 text-success"></i> <!-- Icono de Solicitudes más pequeño -->
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Solicitudes</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Asociados -->
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-2x mb-3 text-primary"></i> <!-- Icono de Asociados más pequeño -->
+                        <a href="" class="h2 text-decoration-none text-dark">Asociados</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Bandeja de Soporte -->
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-headset fa-2x mb-3 text-warning"></i> <!-- Icono de Soporte más pequeño -->
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Bandeja De Soporte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- End Featured Product -->
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 pt-2">
+                    <h2 class="h4 text-success border-bottom pb-1 border-light logo">Info</h2>
+                    <ul class="list-unstyled text-light footer-link-list small">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            Sarapiquí
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:010-020-0340">8819-9019</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="mailto:info@company.com">soportemaph@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row text-light mb-1">
+                <div class="col-12 mb-1">
+                    <div class="w-100 my-1 border-top border-light"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 bg-black py-1">
+            <div class="container">
+                <div class="row pt-1">
+                    <div class="col-12">
+                        <p class="text-left text-light small">
+                            MAPH
+                            | Diseñado Por Joshua, David, Maizeth
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Script -->
+    <script src="{{ asset('storage/js/jquery-1.11.0.min.js') }}"></script>
+    <script src="{{ asset('storage/js/jquery-migrate-1.2.1.min.js') }}"></script>
+    <script src="{{ asset('storage/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('storage/js/templatemo.js') }}"></script>
+    <script src="{{ asset('storage/js/custom.js') }}"></script>
+    <!-- End Script -->
 </body>
 </html>
-
-@endsection
