@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 <!-- Comienza el estilo -->
 @push('styles')
 <style>
@@ -142,8 +141,7 @@
 </style>
 @endpush
 <!-- Finaliza el estilo -->
-
-
+ 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
