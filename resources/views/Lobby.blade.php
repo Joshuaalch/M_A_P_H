@@ -103,14 +103,29 @@
                     </div>
                 </a>
             </div>
+
             <!-- Tarjeta de Asociados -->
             <div class="col-12 col-md-4 mb-4 d-flex justify-content-center"> <!-- Centrar la tarjeta -->
-                <div class="card h-100" style="width: 100%; max-width: 300px;"> <!-- Limitar el ancho máximo -->
-                    <div class="card-body text-center">
-                        <i class="fas fa-users fa-2x mb-3 text-primary"></i>
-                        <a href="{{ route('users.index') }}" class="h2 text-decoration-none text-dark">Usuarios Asociados</a>
+                <a href="{{ url('/asociados') }}" class="text-decoration-none" style="width: 100%; max-width: 300px;"> <!-- Limitar el ancho máximo -->
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users fa-2x mb-3 text-primary"></i>
+                            <p class="h2 text-dark">Asociados</p>
+                        </div>
                     </div>
-                </div>
+                </a>
+            </div>
+
+            <!-- Tarjeta de Empresas -->
+            <div class="col-12 col-md-4 mb-4 d-flex justify-content-center"> <!-- Centrar la tarjeta -->
+                <a href="{{ url('/empresas') }}" class="text-decoration-none" style="width: 100%; max-width: 300px;"> <!-- Limitar el ancho máximo -->
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-building fa-2x mb-3 text-warning"></i> <!-- Icono de empresa -->
+                            <p class="h2 text-dark">Empresas</p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
