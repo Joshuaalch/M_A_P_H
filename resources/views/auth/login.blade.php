@@ -11,38 +11,39 @@
         margin: 0 auto;
         box-sizing: border-box;
         background-color: #2c3e50; /* Fondo oscuro */
-        background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Fondo degradado celeste pastel */
-        color: #000;
+        background: linear-gradient(135deg,rgb(255, 255, 255),rgb(255, 255, 255)); /* Fondo degradado */
+        color: #fff;
     }
 
     .navbar-nav {
         display: flex;
         justify-content: space-between;
-        background: linear-gradient(135deg, #bbdefb, #90caf9); /* Fondo degradado celeste */
-        color: #000;
+        background: linear-gradient(135deg,rgb(91, 63, 168),rgb(180, 39, 39)); /* Fondo degradado */
+        color: #fff;
     }
 
     .navbar-toggler {
         padding: 0.25rem 0.5rem;
         font-size: 1rem;
-        background: linear-gradient(135deg, #e3f2fd, #64b5f6); /* Fondo degradado celeste */
-        color: #000;
+        background: linear-gradient(135deg,rgb(255, 255, 255),rgb(28, 196, 98)); /* Fondo degradado */
+        color: #fff;
     }
 
     /* Fondo y contenedor principal */
     .container {
+        /*display: flex;*/
         justify-content: center;
         align-items: center;
         min-height: 10vh;
-        /*background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Fondo degradado celeste pastel */
-        color: #000;
+        background: linear-gradient(135deg,rgb(255, 255, 255),rgb(255, 255, 255)); /* Fondo degradado */
+        color: #fff;
     }
 
     /* Tarjeta de login */
     .card {
         border: none;
         border-radius: 15px;
-        background: linear-gradient(135deg, #bbdefb,rgb(185, 243, 243)); /* Fondo claro con un toque profesional */
+        background: linear-gradient(135deg, #2980b9, #8e44ad); /* Fondo claro con un toque moderno */
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         transform: translateY(-100px);
         animation: slideIn 0.8s ease forwards;
@@ -66,7 +67,7 @@
     }
 
     .card-title {
-        color:rgb(252, 147, 212); /* Azul profesional */
+        color:rgb(243, 96, 157);
         font-weight: bold;
         text-align: center;
         font-size: 2rem;
@@ -77,22 +78,22 @@
     /* Estilo de los inputs */
     .form-control {
         border-radius: 10px;
-        border: 1px solid #90caf9;
+        border: 1px solid #2980b9;
         transition: border-color 0.3s ease;
     }
 
     .form-control:focus {
-        box-shadow: 0 0 10px rgba(41, 128, 185, 0.5);
-        border-color: #1e88e5;
+        box-shadow: 0 0 10px rgba(235, 16, 118, 0.5);
+        border-color:rgb(233, 32, 132);
     }
 
     .form-control:invalid {
-        border-color:rgb(248, 165, 204);
+        border-color: #e74c3c;
     }
 
     /* Estilo del botón */
     .btn-primary {
-        background: linear-gradient(135deg, #90caf9,rgb(241, 165, 207));
+        background: linear-gradient(135deg,rgb(228, 123, 175), #8e44ad);
         border: none;
         border-radius: 25px;
         padding: 10px;
@@ -104,13 +105,13 @@
     }
 
     .btn-primary:hover {
-        background: linear-gradient(135deg, #64b5f6,rgb(174, 234, 241));
+        background: linear-gradient(135deg, #8e44ad, #2980b9);
         transform: scale(1.05);
     }
 
     /* Enlace de recuperación */
     a {
-        color:rgb(245, 95, 120);
+        color:rgb(214, 11, 55);
         text-decoration: none;
         transition: color 0.3s ease;
         text-align: center;
@@ -120,7 +121,7 @@
 
     a:hover {
         text-decoration: underline;
-        color: #64b5f6;
+        color:rgb(212, 227, 236);
     }
 
     /* Adaptabilidad en pantallas pequeñas */
