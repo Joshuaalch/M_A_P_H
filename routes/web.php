@@ -6,6 +6,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EmpresaController;
 
 // Ruta para mostrar la vista de editar perfil
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -16,6 +17,9 @@ Route::put('/profile/update', [ProfileController::class, 'update'])->name('profi
 Route::get('/lobby', function() {
     return view('lobby');
 })->name('lobby');
+
+// Rutas para el controlador de Empresa (CRUD)
+Route::resource('empresas', EmpresaController::class);
 
 // Bandeja de entrada
 Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
