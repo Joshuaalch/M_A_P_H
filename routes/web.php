@@ -43,8 +43,7 @@ Route::get('/solicitudes', [SolicitudController::class, 'index']);
 Auth::routes();
 
 
-
-
+Route::post('/usuarios/{usuario}/send-email', [UsuarioController::class, 'sendEmail'])->name('usuarios.sendEmail');
 
 // Route::put('/users/deactivate/{id}', [UsersController::class, 'deactivate'])->name('users.deactivate');
 // Route::put('/users/activate/{id}', [UsersController::class, 'activate'])->name('users.activate');
