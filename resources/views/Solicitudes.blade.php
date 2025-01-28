@@ -4,76 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitudes de Usuarios</title>
-    <!-- Estilos minimalistas -->
+    
+    <!-- Estilos mejorados -->
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
+
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 900px;
+            margin: 40px auto;
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            overflow: hidden;
         }
+
         h1 {
-            font-size: 24px;
+            font-size: 28px;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-align: center;
+            font-weight: 600;
         }
+
         .solicitud-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         .solicitud-item {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
+            padding: 18px 24px;
+            border-radius: 8px;
+            margin-bottom: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .solicitud-item:last-child {
-            border-bottom: none;
+
+        .solicitud-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
+
         .solicitud-info {
             flex: 1;
+            margin-right: 20px;
         }
+
         .solicitud-nombre {
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: 500;
             color: #333;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
+
         .solicitud-correo {
             font-size: 14px;
-            color: #666;
+            color: #777;
         }
+
         .solicitud-estado {
             font-size: 14px;
             font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-transform: capitalize;
+            text-align: center;
         }
+
         .estado-pendiente {
-            background-color: #ffc107; /* Amarillo para pendiente */
+            background-color: #ffc107;
             color: #333;
         }
+
         .estado-aprobado {
-            background-color: #28a745; /* Verde para aprobado */
+            background-color: #28a745;
             color: #fff;
         }
+
         .estado-rechazado {
-            background-color: #dc3545; /* Rojo para rechazado */
+            background-color: #dc3545;
             color: #fff;
+        }
+
+        /* Mejorar responsividad */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .solicitud-item {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Solicitudes de Usuarios</h1>
         <ul class="solicitud-list">
@@ -90,5 +130,6 @@
             @endforeach
         </ul>
     </div>
+
 </body>
 </html>

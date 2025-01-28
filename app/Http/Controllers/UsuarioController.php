@@ -2,100 +2,82 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario; // Importa el modelo Usuario
+use App\Models\Usuario;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
-    // Método para mostrar la lista de usuarios
     public function index()
     {
-        // Obtener todos los usuarios, incluyendo la relación con la empresa
-        $usuarios = Usuario::with('empresa')->get();  // Relación con 'empresa'
-        
-        // Pasar los datos a la vista
-        return view('Usuarios', compact('usuarios'));
+        $usuarios = Usuario::with('empresa')->get();
+        return view('usuarios.index', compact('usuarios'));
     }
 
-    // Método para mostrar el formulario de creación de usuarios
     public function create()
     {
-        return view('usuarios.create');
+        $empresas = Empresa::all();
+        return view('usuarios.create', compact('empresas'));
     }
 
-    // Método para almacenar un nuevo usuario en la base de datos
     public function store(Request $request)
     {
-        // Validación de los datos recibidos
-        $validatedData = $request->validate([
-            'id_cedula' => 'required|unique:usuarios,id_cedula',
+        $request->validate([
+            'id_cedula' => 'required|unique:tbusuario',
             'tipo_cedula' => 'required',
-            'empresa_id' => 'required',
+            'id_empresa' => 'required|exists:tbempresa,id_empresa',
             'nombre' => 'required',
             'apellidos' => 'required',
             'telefono' => 'required',
-            'correo' => 'required|email',
+            'correo' => 'required|email|unique:tbusuario',
+            'contrasena' => 'required',
             'rol' => 'required',
-            'estado' => 'required|boolean',
+            'estado' => 'required',
         ]);
 
-        // Crear un nuevo usuario
-        Usuario::create($validatedData);
+        Usuario::create($request->all());
 
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente');
+        return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
     }
 
-    // Método para mostrar un usuario específico
     public function show($id)
     {
-        // Obtener el usuario por su ID y la relación con la empresa
         $usuario = Usuario::with('empresa')->findOrFail($id);
         return view('usuarios.show', compact('usuario'));
     }
 
-    // Método para mostrar el formulario de edición de un usuario
     public function edit($id)
     {
-        // Obtener el usuario por su ID
         $usuario = Usuario::findOrFail($id);
-        return view('usuarios.edit', compact('usuario'));
+        $empresas = Empresa::all();
+        return view('usuarios.edit', compact('usuario', 'empresas'));
     }
 
-    // Método para actualizar un usuario
     public function update(Request $request, $id)
     {
-        // Validación de los datos recibidos
-        $validatedData = $request->validate([
-            'id_cedula' => 'required|unique:usuarios,id_cedula,' . $id,
+        $request->validate([
             'tipo_cedula' => 'required',
-            'empresa_id' => 'required',
+            'id_empresa' => 'required|exists:tbempresa,id_empresa',
             'nombre' => 'required',
             'apellidos' => 'required',
             'telefono' => 'required',
-            'correo' => 'required|email',
+            'correo' => 'required|email|unique:tbusuario,correo,' . $id . ',id_cedula',
+            'contrasena' => 'nullable',
             'rol' => 'required',
-            'estado' => 'required|boolean',
+            'estado' => 'required',
         ]);
 
-        // Buscar el usuario por su ID
         $usuario = Usuario::findOrFail($id);
-        // Actualizar los datos del usuario
-        $usuario->update($validatedData);
+        $usuario->update($request->all());
 
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado exitosamente');
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
     }
 
-    // Método para eliminar un usuario
     public function destroy($id)
     {
-        // Buscar el usuario por su ID
         $usuario = Usuario::findOrFail($id);
-        // Eliminar al usuario
         $usuario->delete();
 
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente');
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 }

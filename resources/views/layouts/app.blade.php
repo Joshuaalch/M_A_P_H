@@ -20,14 +20,14 @@
 
 </head>
 <body>
+    
     <div id="app">
         <!-- Barra de Navegación -->
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <!-- Logo o Nombre de la Aplicación -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'MAPH') }}
-                </a>
+            <!-- <a class="navbar-brand" href="{{ url('/') }}">
+    {{ config('app.name', 'MAPH') }}
+</a> -->
 
                 <!-- Botón para Menú en Dispositivos Móviles -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
