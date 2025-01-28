@@ -106,7 +106,7 @@
 
             <!-- Tarjeta de Asociados -->
             <div class="col-12 col-md-4 mb-4 d-flex justify-content-center"> <!-- Centrar la tarjeta -->
-                <a href="{{ url('/asociados') }}" class="text-decoration-none" style="width: 100%; max-width: 300px;"> <!-- Limitar el ancho máximo -->
+                <a href="{{ url('/usuarios') }}" class="text-decoration-none" style="width: 100%; max-width: 300px;"> <!-- Limitar el ancho máximo -->
                     <div class="card h-100">
                         <div class="card-body text-center">
                             <i class="fas fa-users fa-2x mb-3 text-primary"></i>

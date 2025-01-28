@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\AppointmentController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
@@ -30,7 +30,7 @@ Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages
 // Responder a un mensaje
 Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 
-Route::get('/appointments', [AppointmentController::class, 'index']);
+Route::resource('usuarios', UsuarioController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,8 +45,6 @@ Auth::routes();
 
 
 
-
-Route::get('/usuarios', [UsuarioController::class, 'index']);
 
 // Route::put('/users/deactivate/{id}', [UsersController::class, 'deactivate'])->name('users.deactivate');
 // Route::put('/users/activate/{id}', [UsersController::class, 'activate'])->name('users.activate');
