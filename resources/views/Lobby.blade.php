@@ -35,11 +35,9 @@
         <div class="collapse navbar-collapse justify-content-center" id="templatemo_main_nav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
+                    <a class="nav-link" href="index.html">Bandeja De Soporte</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">Información</a>
-                </li>
+        
             </ul>
         </div>
 
@@ -93,42 +91,34 @@
                 <h1 class="h1">Funcionalidades</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center"> <!-- Centrar las tarjetas horizontalmente -->
             <!-- Tarjeta de Solicitudes -->
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-clipboard-list fa-2x mb-3 text-success"></i> <!-- Icono de Solicitudes más pequeño -->
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Solicitudes</a>
+            <div class="col-12 col-md-4 mb-4 d-flex justify-content-center"> <!-- Centrar la tarjeta -->
+                <a href="{{ url('/solicitudes') }}" class="text-decoration-none" style="width: 100%; max-width: 300px;"> <!-- Limitar el ancho máximo -->
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-clipboard-list fa-2x mb-3 text-success"></i>
+                            <p class="h2 text-dark">Solicitudes Nuevas</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
-
             <!-- Tarjeta de Asociados -->
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
+            <div class="col-12 col-md-4 mb-4 d-flex justify-content-center"> <!-- Centrar la tarjeta -->
+                <div class="card h-100" style="width: 100%; max-width: 300px;"> <!-- Limitar el ancho máximo -->
                     <div class="card-body text-center">
-                        <i class="fas fa-users fa-2x mb-3 text-primary"></i> <!-- Icono de Asociados más pequeño -->
-                        <a href="" class="h2 text-decoration-none text-dark">Asociados</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tarjeta de Bandeja de Soporte -->
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body text-center">
-                        <i class="fas fa-headset fa-2x mb-3 text-warning"></i> <!-- Icono de Soporte más pequeño -->
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Bandeja De Soporte</a>
+                        <i class="fas fa-users fa-2x mb-3 text-primary"></i>
+                        <a href="{{ route('users.index') }}" class="h2 text-decoration-none text-dark">Usuarios Asociados</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
 <!-- End Featured Product -->
+
+
+
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
