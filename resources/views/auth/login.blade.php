@@ -140,7 +140,6 @@
 </style>
 @endpush
 <!-- Finaliza el estilo -->
- 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
