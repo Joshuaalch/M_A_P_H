@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 <!-- Comienza el estilo -->
 @push('styles')
 <style>
@@ -31,12 +30,12 @@
 
     /* Fondo y contenedor principal */
     .container {
-    justify-content: center;
-    align-items: center;
-    min-height: 10vh;
-    color: #000;
-    margin-left: 190px;  /* Ajusta este valor para moverlo más o menos a la derecha */
-}
+        justify-content: center;
+        align-items: center;
+        min-height: 10vh;
+        color: #000;
+        margin-left: 190px;  /* Ajusta este valor para moverlo más o menos a la derecha */
+    }
 
     /* Tarjeta de registro */
     .card {
@@ -61,18 +60,13 @@
         }
     }
 
-    /* Estilo para el Título del Formulario */
-.card-header {
-    background-color: #ffffff; 
-    color:rgb(0, 0, 0);
-    text-align: center;
-    padding: 1rem; 
-    margin-bottom: 1rem; 
-    font-size: 1.5rem; /* Ajusta el tamaño de fuente*/
-}
-
-    .card-body {
-        padding: 2rem;
+    .card-header {
+        background-color: #ffffff;
+        color: #000000;
+        text-align: center;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
     }
 
     .card-title {
@@ -83,7 +77,10 @@
         margin-bottom: 1.5rem;
     }
 
-    /* Estilo de los inputs */
+    .card-body {
+        padding: 2rem;
+    }
+
     .form-control {
         border-radius: 10px;
         border: 1px solid #2980b9;
@@ -99,7 +96,6 @@
         border-color:rgb(248, 165, 204);
     }
 
-    /* Estilo del botón */
     .btn-primary {
         background: linear-gradient(135deg,rgb(113, 192, 245), rgb(253, 132, 199));
         border: none;
@@ -110,7 +106,7 @@
         letter-spacing: 1px;
         transition: transform 0.3s ease;
         width: 100%;
-        color:rgb(255, 255, 255); /* Cambia el color de las letras aquí */
+        color:rgb(255, 255, 255);
     }
 
     .btn-primary:hover {
@@ -118,7 +114,6 @@
         transform: scale(1.05);
     }
 
-    /* Enlace de recuperación */
     a {
         color:rgb(245, 95, 120);
         text-decoration: none;
@@ -133,7 +128,6 @@
         color: #64b5f6;
     }
 
-    /* Adaptabilidad en pantallas pequeñas */
     @media (max-width: 576px) {
         .card-body {
             padding: 1.5rem;
@@ -147,7 +141,6 @@
             font-size: 1rem;
         }
     }
-
 </style>
 @endpush
 <!-- Finaliza el estilo -->
