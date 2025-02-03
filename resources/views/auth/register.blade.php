@@ -1,4 +1,4 @@
-@extends('layouts.app')
+
 <!-- Comienza el estilo -->
 @push('styles')
 <style>
