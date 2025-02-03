@@ -2,52 +2,51 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
-
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\SolicitudController;
+use Illuminate\Support\Facades\Auth;
 
-// Ruta para mostrar la vista de editar perfil
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+// Rutas accesibles solo para usuarios no autenticados (guest)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', function () {
+        return view('auth.login'); // Muestra el formulario de login solo si no está autenticado
+    })->name('login');
+});
 
-// Ruta para procesar la actualización del perfil
-Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-// Definir la ruta para el lobby
-Route::get('/lobby', function() {
-    return view('lobby');
-})->name('lobby');
+// Permitir el acceso a /register sin restricciones
+Route::get('/register', function () {
+    return view('auth.register'); // Permite que el usuario se registre normalmente
+})->name('register');
 
-// Rutas para el controlador de Empresa (CRUD)
-Route::resource('empresas', EmpresaController::class);
+// Rutas protegidas por autenticación (solo para usuarios logueados)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/lobby', function () {
+        return view('lobby');
+    })->name('lobby');
 
-// Bandeja de entrada
-Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-// Detalle de un mensaje
-Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages.show');
+    Route::resource('empresas', EmpresaController::class);
 
-// Responder a un mensaje
-Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
+    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages.show');
+    Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 
-Route::resource('usuarios', UsuarioController::class);
+    Route::resource('usuarios', UsuarioController::class);
+    Route::post('/usuarios/{usuario}/send-email', [UsuarioController::class, 'sendEmail'])->name('usuarios.sendEmail');
 
+    Route::get('/solicitudes', [SolicitudController::class, 'index']);
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+
+// Página de bienvenida accesible sin autenticación
 Route::get('/', function () {
     return view('welcome');
 });
 
-use App\Http\Controllers\SolicitudController;
-
-Route::get('/solicitudes', [SolicitudController::class, 'index']);
-
-Auth::routes();
-
-
-Route::post('/usuarios/{usuario}/send-email', [UsuarioController::class, 'sendEmail'])->name('usuarios.sendEmail');
-
-// Route::put('/users/deactivate/{id}', [UsersController::class, 'deactivate'])->name('users.deactivate');
-// Route::put('/users/activate/{id}', [UsersController::class, 'activate'])->name('users.activate');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
+// Autenticación
+Auth::routes(); // Se habilitan todas las rutas de autenticación, incluyendo register
