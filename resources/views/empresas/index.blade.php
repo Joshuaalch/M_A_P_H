@@ -12,6 +12,7 @@
         </a>
     </div>
     
+    <!-- Barra de búsqueda -->
     <div class="mb-3 d-flex justify-content-center">
         <div class="input-group w-50">
             <span class="input-group-text"><i class="bi bi-search"></i></span>
@@ -19,6 +20,7 @@
         </div>
     </div>
     
+    <!-- Tabla de Empresas -->
     <div class="table-responsive shadow-sm rounded">
         <table class="table table-hover align-middle text-center">
             <thead class="table-dark">
@@ -53,12 +55,14 @@
                                 <a href="{{ route('empresas.edit', $empresa->id_empresa) }}" class="btn btn-outline-primary btn-sm" title="Editar">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <form action="{{ route('empresas.destroy', $empresa->id_empresa) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar esta empresa?')">
+                                <button class="btn btn-outline-danger btn-sm delete-empresa" data-id="{{ $empresa->id_empresa }}" title="Eliminar">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+
+                                <!-- Formulario de eliminación oculto -->
+                                <form id="delete-form-{{ $empresa->id_empresa }}" action="{{ route('empresas.destroy', $empresa->id_empresa) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger btn-sm" title="Eliminar">
-                                        <i class="bi bi-trash-fill"></i>
-                                    </button>
                                 </form>
                             </div>
                         </td>
@@ -69,15 +73,43 @@
     </div>
 </div>
 
+<!-- Importar SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    let filter = this.value.toLowerCase();
-    let rows = document.querySelectorAll('#empresaTable tr');
-    
-    rows.forEach(row => {
-        let name = row.cells[0].textContent.toLowerCase();
-        let cedula = row.cells[1].textContent.toLowerCase();
-        row.style.display = name.includes(filter) || cedula.includes(filter) ? '' : 'none';
+document.addEventListener('DOMContentLoaded', function () {
+    // Confirmación de eliminación con SweetAlert2
+    document.querySelectorAll('.delete-empresa').forEach(button => {
+        button.addEventListener('click', function () {
+            let empresaId = this.getAttribute('data-id');
+
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Esta acción no se puede deshacer",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + empresaId).submit();
+                }
+            });
+        });
+    });
+
+    // Búsqueda en tiempo real
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#empresaTable tr');
+
+        rows.forEach(row => {
+            let name = row.cells[0].textContent.toLowerCase();
+            let cedula = row.cells[1].textContent.toLowerCase();
+            row.style.display = name.includes(filter) || cedula.includes(filter) ? '' : 'none';
+        });
     });
 });
 </script>
