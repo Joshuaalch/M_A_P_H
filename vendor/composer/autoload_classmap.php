@@ -36,6 +36,7 @@ return array(
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Mail\\ReplyToMessage' => $baseDir . '/app/Mail/ReplyToMessage.php',
+    'App\\Mail\\UsuarioCorreo' => $baseDir . '/app/Mail/UsuarioCorreo.php',
     'App\\Models\\Antecedente' => $baseDir . '/app/Models/Antecedente.php',
     'App\\Models\\Cita' => $baseDir . '/app/Models/Cita.php',
     'App\\Models\\Consulta' => $baseDir . '/app/Models/Consulta.php',

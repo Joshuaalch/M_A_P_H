@@ -8,10 +8,13 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Auth;
 
-// Rutas accesibles solo para usuarios no autenticados (guest)
+// Redirigir a /lobby si ya está autenticado y trata de acceder a /login
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
-        return view('auth.login'); // Muestra el formulario de login solo si no está autenticado
+        if (Auth::check()) {
+            return redirect()->route('lobby'); // Redirigir al lobby si está logueado
+        }
+        return view('auth.login');
     })->name('login');
 });
 

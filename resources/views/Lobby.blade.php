@@ -18,10 +18,10 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2">
     <div class="container d-flex justify-content-between align-items-center">
         <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="{{ asset('storage/img/logo1.png') }}" alt="Logo MAPH" style="width: 100px; height: auto;">
+            <img src="{{ asset('storage/img/logo1.png') }}" alt="Logo MAPH" style="width: 120px; height: auto;">
         </a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,35 +30,31 @@
 
         <div class="collapse navbar-collapse justify-content-center" id="main_nav">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Bandeja De Soporte</a>
-                </li>
+                <li class="nav-item"></li>
             </ul>
         </div>
 
         <div class="d-flex align-items-center">
-            <div class="nav-item dropdown me-3">
-                <a class="nav-icon position-relative text-decoration-none d-flex align-items-center justify-content-center" href="#" id="notificationDropdown" data-bs-toggle="dropdown">
-                    <i class="fas fa-bell text-dark"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-danger">1</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#">Nueva solicitud recibida</a>
-                </div>
-            </div>
-            
             <div class="nav-item dropdown">
                 <a class="nav-icon position-relative text-decoration-none d-flex align-items-center justify-content-center" href="#" id="profileDropdown" data-bs-toggle="dropdown">
                     @auth
-                        <span class="text-dark">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                        <div class="d-flex align-items-center bg-light rounded-circle p-2 shadow-sm" style="width: 50px; height: 50px;">
+                            <span class="text-dark fw-bold fs-5">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                        </div>
                     @else
-                        <i class="fa fa-user text-dark"></i>
+                        <i class="fa fa-user text-dark fs-3"></i>
                     @endauth
                 </a>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <a href="{{ route('profile.edit') }}" class="dropdown-item">Editar Perfil</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                <div class="dropdown-menu dropdown-menu-end p-3 text-center shadow-sm text-center">
+                    @auth
+                        <p class="mb-1 fw-bold text-center">{{ Auth::user()->name }}</p>
+                        <p class="text-muted small text-center">{{ Auth::user()->email }}</p>
+                        <a href="{{ route('profile.edit') }}" class="btn btn-sm btn-primary w-100 mb-2">Editar Perfil</a>
+                        <a class="btn btn-sm btn-danger w-100" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-sm btn-primary w-100">Iniciar Sesión</a>
+                    @endauth
                 </div>
             </div>
         </div>
