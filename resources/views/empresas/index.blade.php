@@ -34,7 +34,7 @@
             vertical-align: middle;
         }
         .btn-action {
-            margin-right: 5px;
+            margin-right: 10px;
         }
         .btn-success {
             background-color: #28a745;
@@ -80,8 +80,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-               
-                 
                 </ul>
             </div>
         </div>
@@ -117,13 +115,15 @@
                             </span>
                         </td>
                         <td>
-                            <a href="{{ route('empresas.show', $empresa->id_empresa) }}" class="btn btn-info btn-action">Ver</a>
-                            <a href="{{ route('empresas.edit', $empresa->id_empresa) }}" class="btn btn-primary btn-action">Editar</a>
-                            <form action="{{ route('empresas.destroy', $empresa->id_empresa) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-action">Eliminar</button>
-                            </form>
+                            <div class="d-flex justify-content-start">
+                                <a href="{{ route('empresas.show', $empresa->id_empresa) }}" class="btn btn-info btn-action">Ver</a>
+                                <a href="{{ route('empresas.edit', $empresa->id_empresa) }}" class="btn btn-primary btn-action">Editar</a>
+                                <form action="{{ route('empresas.destroy', $empresa->id_empresa) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-action">Eliminar</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
