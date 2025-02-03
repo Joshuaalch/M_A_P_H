@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 
-use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EmpresaController;
 
 // Ruta para mostrar la vista de editar perfil
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -17,6 +18,9 @@ Route::get('/lobby', function() {
     return view('lobby');
 })->name('lobby');
 
+// Rutas para el controlador de Empresa (CRUD)
+Route::resource('empresas', EmpresaController::class);
+
 // Bandeja de entrada
 Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
 
@@ -26,24 +30,23 @@ Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages
 // Responder a un mensaje
 Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 
-Route::get('/appointments', [AppointmentController::class, 'index']);
+Route::resource('usuarios', UsuarioController::class);
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+use App\Http\Controllers\SolicitudController;
+
+Route::get('/solicitudes', [SolicitudController::class, 'index']);
+
 Auth::routes();
 
 
-/// Listado de usuarios
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::post('/usuarios/{usuario}/send-email', [UsuarioController::class, 'sendEmail'])->name('usuarios.sendEmail');
 
-// Activar usuario
-Route::put('/users/{id}/activate', [UserController::class, 'activate'])->name('users.activate');
-
-// Desactivar usuario
-Route::put('/users/{id}/deactivate', [UserController::class, 'deactivate'])->name('users.deactivate');
-
+// Route::put('/users/deactivate/{id}', [UsersController::class, 'deactivate'])->name('users.deactivate');
+// Route::put('/users/activate/{id}', [UsersController::class, 'activate'])->name('users.activate');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
