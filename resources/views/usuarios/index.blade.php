@@ -10,7 +10,7 @@
     </div>
 
     <div class="mb-3 d-flex justify-content-center">
-        <input type="text" id="searchInput" class="form-control w-50" placeholder="Buscar por nombre o letra...">
+        <input type="text" id="searchInput" class="form-control w-50" placeholder="Buscar por nombre o cédula...">
     </div>
 
     <div class="table-responsive shadow-sm rounded">
@@ -53,26 +53,43 @@
     </div>
 </div>
 
+<!-- Importar SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Confirmación de eliminación con SweetAlert2
     document.querySelectorAll('.delete-user').forEach(button => {
         button.addEventListener('click', function () {
             let userId = this.getAttribute('data-id');
-            if (confirm('¿Estás seguro de eliminar este usuario?')) {
-                document.getElementById('delete-form-' + userId).submit();
-            }
+
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Esta acción no se puede deshacer",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + userId).submit();
+                }
+            });
         });
     });
-});
 
-// Filtro de búsqueda en la tabla
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    let filter = this.value.toLowerCase();
-    let rows = document.querySelectorAll('#userTable tr');
-    
-    rows.forEach(row => {
-        let name = row.cells[1].textContent.toLowerCase();
-        row.style.display = name.includes(filter) ? '' : 'none';
+    // Búsqueda en tiempo real
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#userTable tr');
+
+        rows.forEach(row => {
+            let name = row.cells[1].textContent.toLowerCase();
+            let cedula = row.cells[0].textContent.toLowerCase();
+            row.style.display = name.includes(filter) || cedula.includes(filter) ? '' : 'none';
+        });
     });
 });
 </script>

@@ -20,7 +20,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2">
     <div class="container d-flex justify-content-between align-items-center">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <img src="{{ asset('storage/img/logo1.png') }}" alt="Logo MAPH" style="width: 120px; height: auto;">
         </a>
 
@@ -45,12 +45,12 @@
                         <i class="fa fa-user text-dark fs-3"></i>
                     @endauth
                 </a>
-                <div class="dropdown-menu dropdown-menu-end p-3 text-center shadow-sm text-center">
+                <div class="dropdown-menu dropdown-menu-end p-3 shadow-sm text-center">
                     @auth
-                        <p class="mb-1 fw-bold text-center">{{ Auth::user()->name }}</p>
-                        <p class="text-muted small text-center">{{ Auth::user()->email }}</p>
+                        <p class="mb-1 fw-bold">{{ Auth::user()->name }}</p>
+                        <p class="text-muted small">{{ Auth::user()->email }}</p>
                         <a href="{{ route('profile.edit') }}" class="btn btn-sm btn-primary w-100 mb-2">Editar Perfil</a>
-                        <a class="btn btn-sm btn-danger w-100" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+                        <button class="btn btn-sm btn-danger w-100 logout-btn">Cerrar Sesión</button>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                     @else
                         <a href="{{ route('login') }}" class="btn btn-sm btn-primary w-100">Iniciar Sesión</a>
@@ -101,9 +101,45 @@
     </div>
 </footer>
 
+<!-- Importar SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('storage/js/jquery-1.11.0.min.js') }}"></script>
 <script src="{{ asset('storage/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('storage/js/templatemo.js') }}"></script>
 <script src="{{ asset('storage/js/custom.js') }}"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Notificación de inicio de sesión exitosa
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: '¡Bienvenido!',
+            text: '{{ session('success') }}',
+            timer: 3000,
+            showConfirmButton: false
+        });
+    @endif
+
+    // Confirmación antes de cerrar sesión
+    document.querySelector('.logout-btn').addEventListener('click', function (event) {
+        event.preventDefault(); // Evita el envío inmediato
+
+        Swal.fire({
+            title: '¿Seguro que quieres cerrar sesión?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, salir',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logout-form').submit();
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

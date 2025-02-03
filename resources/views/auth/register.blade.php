@@ -1,5 +1,3 @@
-<!-- resources/views/register.blade.php -->
-
 @extends('layouts.app') <!-- Asegúrate de que este layout exista -->
 
 @section('content')
@@ -7,12 +5,24 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    {{ __('Registro') }}
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>{{ __('Registro') }}</h2>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    @if (session('success'))
+                        <script>
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Registro Exitoso',
+                                text: '{{ session('success') }}',
+                                timer: 3000,
+                                showConfirmButton: false
+                            });
+                        </script>
+                    @endif
+
+                    <form method="POST" action="{{ route('register') }}" id="registroForm">
                         @csrf
 
                         <!-- Campo de Nombre -->
@@ -64,7 +74,7 @@
 
                         <!-- Botón de Registro -->
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" id="registroBtn">
                                 {{ __('Registrarse') }}
                             </button>
                         </div>
@@ -76,6 +86,32 @@
 </div>
 @endsection
 
+<!-- Importar SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('registroForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita el envío inmediato del formulario
+
+        Swal.fire({
+            title: '¿Confirmar Registro?',
+            text: "Asegúrate de que los datos ingresados son correctos.",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, registrarme',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit(); // Envía el formulario solo si el usuario confirma
+            }
+        });
+    });
+});
+</script>
+
 @push('styles')
 <style>
     /* Barra de Navegación */
@@ -85,39 +121,24 @@
         max-width: 100%;
         margin: 0 auto;
         box-sizing: border-box;
-        background-color: #2c3e50; /* Fondo oscuro */
         background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Fondo degradado celeste pastel */
         color: #000;
     }
 
-    .navbar-nav {
-        display: flex;
-        justify-content: space-between;
-        background: linear-gradient(135deg, #bbdefb, #90caf9); /* Fondo degradado celeste */
-        color: #000;
-    }
-
-    .navbar-toggler {
-        padding: 0.25rem 0.5rem;
-        font-size: 1rem;
-        background: linear-gradient(135deg, #e3f2fd, #64b5f6); /* Fondo degradado celeste */
-        color: #000;
-    }
-
-    /* Fondo y contenedor principal */
+    /* Contenedor principal */
     .container {
         justify-content: center;
         align-items: center;
         min-height: 10vh;
         color: #000;
-        margin-left: 190px;  /* Ajusta este valor para moverlo más o menos a la derecha */
+        margin-left: 190px;  /* Ajusta este valor según sea necesario */
     }
 
     /* Tarjeta de registro */
     .card {
         border: none;
         border-radius: 15px;
-        background: linear-gradient(135deg, #bbdefb,rgb(185, 243, 243)); /* Fondo claro */
+        background: linear-gradient(135deg, #bbdefb, rgb(185, 243, 243)); /* Fondo claro */
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         transform: translateY(-100px);
         animation: slideIn 0.8s ease forwards;
@@ -141,20 +162,7 @@
         color: #000000;
         text-align: center;
         padding: 1rem;
-        margin-bottom: 1rem;
         font-size: 1.5rem;
-    }
-
-    .card-title {
-        color: #ff66b2; /* rosado profesional */
-        text-align: center;
-        font-size: 2rem;
-        text-transform: uppercase;
-        margin-bottom: 1.5rem;
-    }
-
-    .card-body {
-        padding: 2rem;
     }
 
     .form-control {
@@ -168,30 +176,25 @@
         border-color: #1e88e5;
     }
 
-    .form-control:invalid {
-        border-color:rgb(248, 165, 204);
-    }
-
     .btn-primary {
-        background: linear-gradient(135deg,rgb(113, 192, 245), rgb(253, 132, 199));
+        background: linear-gradient(135deg, rgb(113, 192, 245), rgb(253, 132, 199));
         border: none;
         border-radius: 25px;
         padding: 10px;
         font-size: 1.1rem;
         font-weight: bold;
-        letter-spacing: 1px;
         transition: transform 0.3s ease;
         width: 100%;
-        color:rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
     }
 
     .btn-primary:hover {
-        background: linear-gradient(135deg,rgb(248, 84, 185), rgb(174, 234, 241));
+        background: linear-gradient(135deg, rgb(248, 84, 185), rgb(174, 234, 241));
         transform: scale(1.05);
     }
 
     a {
-        color:rgb(245, 95, 120);
+        color: rgb(245, 95, 120);
         text-decoration: none;
         transition: color 0.3s ease;
         text-align: center;
@@ -207,10 +210,6 @@
     @media (max-width: 576px) {
         .card-body {
             padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
         }
 
         .btn-primary {
