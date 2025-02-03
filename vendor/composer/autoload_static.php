@@ -605,6 +605,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Mail\\ReplyToMessage' => __DIR__ . '/../..' . '/app/Mail/ReplyToMessage.php',
+        'App\\Mail\\UsuarioCorreo' => __DIR__ . '/../..' . '/app/Mail/UsuarioCorreo.php',
         'App\\Models\\Antecedente' => __DIR__ . '/../..' . '/app/Models/Antecedente.php',
         'App\\Models\\Cita' => __DIR__ . '/../..' . '/app/Models/Cita.php',
         'App\\Models\\Consulta' => __DIR__ . '/../..' . '/app/Models/Consulta.php',
