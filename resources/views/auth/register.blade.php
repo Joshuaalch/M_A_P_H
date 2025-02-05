@@ -1,5 +1,9 @@
 @extends('layouts.app') <!-- Asegúrate de que este layout exista -->
 
+@push('styles')
+    @vite(['resources/css/register.css'])
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -111,110 +115,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
-
-@push('styles')
-<style>
-    /* Barra de Navegación */
-    nav.navbar {
-        padding: 0.2rem 0.2rem; 
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        box-sizing: border-box;
-        background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Fondo degradado celeste pastel */
-        color: #000;
-    }
-
-    /* Contenedor principal */
-    .container {
-        justify-content: center;
-        align-items: center;
-        min-height: 10vh;
-        color: #000;
-        margin-left: 190px;  /* Ajusta este valor según sea necesario */
-    }
-
-    /* Tarjeta de registro */
-    .card {
-        border: none;
-        border-radius: 15px;
-        background: linear-gradient(135deg, #bbdefb, rgb(185, 243, 243)); /* Fondo claro */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        transform: translateY(-100px);
-        animation: slideIn 0.8s ease forwards;
-        width: 100%;
-        max-width: 550px;
-    }
-
-    @keyframes slideIn {
-        from {
-            transform: translateY(-100px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-
-    .card-header {
-        background-color: #ffffff;
-        color: #000000;
-        text-align: center;
-        padding: 1rem;
-        font-size: 1.5rem;
-    }
-
-    .form-control {
-        border-radius: 10px;
-        border: 1px solid #2980b9;
-        transition: border-color 0.3s ease;
-    }
-
-    .form-control:focus {
-        box-shadow: 0 0 10px rgba(41, 128, 185, 0.5);
-        border-color: #1e88e5;
-    }
-
-    .btn-primary {
-        background: linear-gradient(135deg, rgb(113, 192, 245), rgb(253, 132, 199));
-        border: none;
-        border-radius: 25px;
-        padding: 10px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        transition: transform 0.3s ease;
-        width: 100%;
-        color: rgb(255, 255, 255);
-    }
-
-    .btn-primary:hover {
-        background: linear-gradient(135deg, rgb(248, 84, 185), rgb(174, 234, 241));
-        transform: scale(1.05);
-    }
-
-    a {
-        color: rgb(245, 95, 120);
-        text-decoration: none;
-        transition: color 0.3s ease;
-        text-align: center;
-        display: block;
-        margin-top: 1rem;
-    }
-
-    a:hover {
-        text-decoration: underline;
-        color: #64b5f6;
-    }
-
-    @media (max-width: 576px) {
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .btn-primary {
-            font-size: 1rem;
-        }
-    }
-</style>
-@endpush
