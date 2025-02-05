@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @push('styles')
     @vite(['resources/css/login.css'])
 @endpush
