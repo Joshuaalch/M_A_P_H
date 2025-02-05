@@ -1,12 +1,123 @@
 @extends('layouts.app')
 
+<style>
+        
+/* Barra de Navegación */
+nav.navbar {
+    padding: 0.2rem 0.2rem; 
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    box-sizing: border-box;
+    background: linear-gradient(135deg, rgb(190, 223, 247), rgb(255, 255, 255));
+    color: #000;
+}
+
+
+/* Contenedor principal */
+.container {
+    position: relative;
+    left: 220px; /* Mueve el formulario hacia la derecha */
+    min-height: 10vh;
+    color: #000000;
+}
+
+
+/* Tarjeta de registro */
+.card {
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #bbdefb, rgb(185, 243, 243));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-100px);
+    animation: slideIn 0.8s ease forwards;
+    width: 100%;
+    max-width: 550px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Estilo del título del formulario */
+.card-header {
+    background-color:rgb(248, 167, 198);
+    color: #ff5733; /* Cambia este color al que prefieras */
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Estilo de los campos de entrada */
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #2980b9;
+    transition: border-color 0.3s ease;
+    padding: 12px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 10px rgba(41, 128, 185, 0.5);
+    border-color: #1e88e5;
+}
+
+/* Botón primario */
+.btn-primary {
+    background: linear-gradient(135deg, rgb(113, 192, 245), rgb(253, 132, 199));
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    width: 100%;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, rgb(248, 84, 185), rgb(174, 234, 241));
+    transform: scale(1.05);
+}
+
+/* Estilo para enlaces */
+a {
+    color: rgb(245, 95, 120);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #64b5f6;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+    .btn-primary {
+        font-size: 1rem;
+    }
+}
+
+</style>
+
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-0 shadow-lg rounded-4">
                 <div class="card-header bg-gradient text-white text-center py-4 rounded-top" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
-                    <h2 class="fw-bold">Crear Nueva Empresa</h2>
+                    <h2 class="fw-bold">Crear nueva empresa </h2>
                 </div>
                 
                 <div class="card-body p-5">
