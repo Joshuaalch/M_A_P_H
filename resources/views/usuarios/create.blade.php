@@ -1,4 +1,126 @@
 @extends('layouts.app')
+<style>
+/* Barra de Navegación */
+nav.navbar {
+    padding: 0.2rem 0.2rem; 
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    box-sizing: border-box;
+    background: linear-gradient(135deg, rgb(190, 223, 247), rgb(255, 255, 255));
+    color: #000;
+}
+
+/* Contenedor principal */
+.container {
+    position: relative;
+    left: 50%; /* Mueve el contenedor al 50% desde la izquierda */
+    transform: translateX(-50%); /* Centra el contenedor */
+    min-height: 10vh;
+    color: #000000;
+}
+
+/* Tarjeta de registro */
+.card {
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #bbdefb, rgb(185, 243, 243));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-100px);
+    animation: slideIn 0.8s ease forwards;
+    width: 100%;
+    max-width: 550px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Estilo del título del formulario */
+.card-header {
+    background-color: rgb(248, 167, 198); /* Fondo de la cabecera */
+    color: rgb(248, 167, 198);
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-header h2 {
+    color:rgb(245, 132, 220); /* Cambia el color del texto del título específicamente */
+}
+
+/* Estilo de los campos de entrada */
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #2980b9;
+    transition: border-color 0.3s ease;
+    padding: 12px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 10px rgba(41, 128, 185, 0.5);
+    border-color: #1e88e5;
+}
+
+/* Estilo base para todos los botones */
+button, .btn {
+    width: 48%; /* Hace que los botones ocupen un 48% del contenedor, asegurando que tengan el mismo tamaño */
+    padding: 12px; /* Ajuste de padding para consistencia */
+    font-size: 1rem; /* Tamaño de fuente consistente */
+    border-radius: 25px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    display: inline-block; /* Asegura que los botones se vean correctamente */
+    margin: 0.5rem; /* Añade un poco de espacio entre los botones */
+}
+
+/* Botón de acción (Guardar y Volver) */
+.btn-primary, .btn-secondary {
+    background: linear-gradient(135deg, rgb(113, 192, 245), rgb(253, 132, 199)); /* Mismo color */
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    background: linear-gradient(135deg, rgb(248, 84, 185), rgb(174, 234, 241)); /* Mismo color hover */
+    transform: scale(1.05);
+}
+
+/* Estilo para enlaces */
+a {
+    color: rgb(245, 95, 120);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #64b5f6;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+    .container {
+        left: 0; /* En pantallas pequeñas, mueve el formulario a la izquierda */
+        transform: translateX(0); /* Elimina el desplazamiento horizontal */
+    }
+    .card-body {
+        padding: 1.5rem;
+    }
+    .btn-primary, .btn-secondary {
+        font-size: 1rem;
+    }
+}
+</style>
 
 @section('content')
 <div class="container mt-5">
@@ -86,8 +208,8 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary shadow-sm px-4 py-2">Volver</a>
-                            <button type="submit" class="btn btn-lg btn-primary shadow-sm fw-bold px-4 py-2" id="guardarBtn">Guardar</button>
+                            <a href="{{ route('usuarios.index') }}" class="btn btn-lg btn-primary shadow-sm fw-bold px-4 py-2">Volver</a>
+                            <button type="submit" class="btn btn-lg btn-primary shadow-sm fw-bold px-4 py-2">Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -95,30 +217,4 @@
         </div>
     </div>
 </div>
-
-<!-- Importar SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('crearUsuarioForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        Swal.fire({
-            title: '¿Registrar este usuario?',
-            text: "Asegúrate de que los datos son correctos",
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, guardar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit();
-            }
-        });
-    });
-});
-</script>
 @endsection

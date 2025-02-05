@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 <style>
         
 /* Barra de Navegación */
@@ -15,7 +16,8 @@ nav.navbar {
 /* Contenedor principal */
 .container {
     position: relative;
-    left: 220px; /* Mueve el formulario hacia la derecha */
+    left: 50%; /* Mueve el contenedor al 50% desde la izquierda */
+    transform: translateX(-50%); /* Centra el contenedor */
     min-height: 10vh;
     color: #000000;
 }
@@ -45,14 +47,19 @@ nav.navbar {
 }
 
 /* Estilo del título del formulario */
+/* Estilo del título del formulario */
 .card-header {
-    background-color:rgb(248, 167, 198);
-    color: #ff5733; /* Cambia este color al que prefieras */
+    background-color: rgb(248, 167, 198); /* Fondo de la cabecera */
+    color: rgb(248, 167, 198);
     text-align: center;
     padding: 1rem;
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
+.card-header h2 {
+    color:rgb(245, 132, 220); /* Cambia el color del texto del título específicamente */
+}
 /* Estilo de los campos de entrada */
 .form-control {
     border-radius: 10px;
@@ -101,6 +108,10 @@ a:hover {
 
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 576px) {
+    .container {
+        left: 0; /* En pantallas pequeñas, mueve el formulario a la izquierda */
+        transform: translateX(0); /* Elimina el desplazamiento horizontal */
+    }
     .card-body {
         padding: 1.5rem;
     }
@@ -110,6 +121,7 @@ a:hover {
 }
 
 </style>
+
 
 @section('content')
 <div class="container mt-5">
