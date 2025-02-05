@@ -27,7 +27,7 @@ nav.navbar {
 .card {
     border: none;
     border-radius: 15px;
-    background: linear-gradient(135deg, #bbdefb, rgb(185, 243, 243));
+    background: linear-gradient(135deg,rgb(246, 248, 250), rgb(185, 243, 243));
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transform: translateY(-100px);
     animation: slideIn 0.8s ease forwards;
@@ -46,7 +46,7 @@ nav.navbar {
     }
 }
 
-/* Estilo del título del formulario */
+
 /* Estilo del título del formulario */
 .card-header {
     background-color: rgb(248, 167, 198); /* Fondo de la cabecera */
