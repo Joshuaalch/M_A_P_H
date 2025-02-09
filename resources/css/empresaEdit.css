@@ -1,8 +1,7 @@
-
 /* Barra de Navegación */
 nav.navbar {
-    padding: 0.2rem 0.2rem; 
-    width: 100%; /* Asegura que ocupe todo el ancho */
+    padding: 0.2rem 0.2rem;
+    width: 100%;
     box-sizing: border-box;
     background: linear-gradient(135deg, rgb(190, 223, 247), rgb(255, 255, 255));
     color: #000;
@@ -11,10 +10,11 @@ nav.navbar {
 /* Contenedor principal */
 .container {
     position: relative;
-    left: 50%; /* Mueve el contenedor al 50% desde la izquierda */
-    transform: translateX(-50%); /* Centra el contenedor */
+    left: 50%; /* Mover el contenedor al 50% de la pantalla */
+    transform: translateX(-50%); /* Ajuste para centrar completamente */
     min-height: 10vh;
     color: #000000;
+    padding-right: 20px; /* Para evitar el desbordamiento */
 }
 
 /* Tarjeta de registro */
@@ -26,7 +26,7 @@ nav.navbar {
     transform: translateY(-100px);
     animation: slideIn 0.8s ease forwards;
     width: 100%;
-    max-width: 550px;
+    max-width: 480px;
 }
 
 @keyframes slideIn {
@@ -41,6 +41,7 @@ nav.navbar {
 }
 
 /* Estilo del título del formulario */
+
 .card-header {
     background-color: rgb(248, 167, 198); /* Fondo de la cabecera */
     color: rgb(248, 167, 198);
@@ -53,7 +54,6 @@ nav.navbar {
 .card-header h2 {
     color:rgb(245, 132, 220); /* Cambia el color del texto del título específicamente */
 }
-
 /* Estilo de los campos de entrada */
 .form-control {
     border-radius: 10px;
@@ -67,27 +67,34 @@ nav.navbar {
     border-color: #1e88e5;
 }
 
-/* Estilo base para todos los botones */
-button, .btn {
-    width: 48%; /* Hace que los botones ocupen un 48% del contenedor, asegurando que tengan el mismo tamaño */
-    padding: 12px; /* Ajuste de padding para consistencia */
-    font-size: 1rem; /* Tamaño de fuente consistente */
-    border-radius: 25px;
-    font-weight: bold;
-    transition: transform 0.3s ease;
-    display: inline-block; /* Asegura que los botones se vean correctamente */
-    margin: 0.5rem; /* Añade un poco de espacio entre los botones */
+/* Estilo para select */
+.form-select {
+    border-radius: 10px;
+    border: 1px solid #2980b9;
+    transition: border-color 0.3s ease;
+    padding: 12px;
 }
 
-/* Botón de acción (Guardar y Volver) */
-.btn-primary, .btn-secondary {
-    background: linear-gradient(135deg, rgb(113, 192, 245), rgb(253, 132, 199)); /* Mismo color */
+.form-select:focus {
+    box-shadow: 0 0 10px rgba(41, 128, 185, 0.5);
+    border-color: #1e88e5;
+}
+
+/* Botón primario */
+.btn-primary {
+    background: linear-gradient(135deg, rgb(113, 192, 245), rgb(253, 132, 199));
     border: none;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    width: 100%;
     color: white;
 }
 
-.btn-primary:hover, .btn-secondary:hover {
-    background: linear-gradient(135deg, rgb(248, 84, 185), rgb(174, 234, 241)); /* Mismo color hover */
+.btn-primary:hover {
+    background: linear-gradient(135deg, rgb(248, 84, 185), rgb(174, 234, 241));
     transform: scale(1.05);
 }
 
@@ -108,14 +115,15 @@ a:hover {
 
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 576px) {
-    .container {
-        left: 0; /* En pantallas pequeñas, mueve el formulario a la izquierda */
-        transform: translateX(0); /* Elimina el desplazamiento horizontal */
-    }
     .card-body {
         padding: 1.5rem;
     }
-    .btn-primary, .btn-secondary {
+    .btn-primary {
         font-size: 1rem;
+    }
+    .container {
+        left: 0;
+        transform: translateX(0); /* Sin desplazamiento en pantallas pequeñas */
+        padding-right: 0;
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app') <!-- Asegúrate de que este layout exista -->
+@extends('layouts.app')
 
 @push('styles')
     @vite(['resources/css/register.css'])
