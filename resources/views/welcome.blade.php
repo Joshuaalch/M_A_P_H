@@ -11,32 +11,47 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #007bff, #6610f2);
             margin: 0;
+            font-family: 'Arial', sans-serif;
         }
         .login-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
         .btn-login {
-            background-color: #444444;/* Azul pastel */
+            background-color: #007bff;
             color: #fff;
             font-size: 1.2rem;
             padding: 12px 30px;
             border-radius: 8px;
             border: none;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
-            cursor: pointer;
+            display: inline-block;
         }
         .btn-login:hover {
-            background-color: #0b5ed7; /* Color más oscuro al pasar el mouse */
+            background-color: #0056b3;
+            transform: scale(1.05);
         }
         .logo {
             margin-bottom: 20px;
         }
         .logo img {
-            width: 250px; /* Tamaño de la imagen */
+            width: 200px;
             height: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo img:hover {
+            transform: rotate(5deg) scale(1.1);
         }
     </style>
 </head>
@@ -48,7 +63,7 @@
         </div>
 
         <!-- Botón de Login -->
-        <a href="{{ route('login') }}" class="btn btn-login">Login</a>
+        <a href="{{ route('login') }}" class="btn btn-login">Ingresar</a>
     </div>
 
     <!-- Scripts de Bootstrap -->
