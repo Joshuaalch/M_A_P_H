@@ -1,9 +1,17 @@
+
 @extends('layouts.app')
+
 @push('styles')
     @vite(['resources/css/login.css'])
 @endpush
 
 @section('content')
+<!-- Logo independiente arriba del formulario -->
+<div class="logo-container text-center">
+    <img src="{{ asset('storage/img/logo1.png') }}" alt="Logo MAPH" class="logo">
+</div>
+
+<!-- Contenedor del login -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
