@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('styles')
+    @vite(['resources/css/userEdit.css'])
+@endpush
+
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -86,8 +90,8 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary shadow-sm px-4 py-2">Volver</a>
-                            <button type="submit" class="btn btn-lg btn-primary shadow-sm fw-bold px-4 py-2" id="actualizarBtn">Actualizar</button>
+                            <a href="{{ route('usuarios.index') }}" class="btn btn-common shadow-sm px-4 py-2">Volver</a>
+                            <button type="submit" class="btn btn-common btn-lg shadow-sm fw-bold px-4 py-2" id="actualizarBtn">Actualizar</button>
                         </div>
                     </form>
                 </div>

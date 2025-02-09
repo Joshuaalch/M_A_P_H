@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@push('styles')
+    @vite(['resources/css/showEmpresa.css'])
+@endpush
+
+
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">

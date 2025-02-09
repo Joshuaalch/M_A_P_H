@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('styles')
+    @vite(['resources/css/empresaEdit.css'])
+@endpush
 
 @section('content')
 <div class="container mt-5">
