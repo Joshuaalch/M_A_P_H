@@ -1,8 +1,12 @@
 @extends('layouts.app')
+<<<<<<< Updated upstream
 
 @push('styles')
     @vite(['resources/css/login.css'])
 @endpush
+=======
+@vite(['resources/css/login.css'])
+>>>>>>> Stashed changes
 
 @section('content')
 <div class="container">
