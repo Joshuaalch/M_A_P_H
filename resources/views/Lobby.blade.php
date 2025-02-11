@@ -67,10 +67,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4 mb-4">
                 <a href="{{ url('/solicitudes') }}" class="text-decoration-none">
-                    <div class="card shadow-sm p-4">
-                        <i class="fas fa-clipboard-list fa-2x mb-3 text-success"></i>
-                        <h3 class="text-dark">Solicitudes Nuevas</h3>
-                    </div>
+                    
                 </a>
             </div>
             <div class="col-md-4 mb-4">

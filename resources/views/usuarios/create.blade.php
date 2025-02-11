@@ -25,6 +25,7 @@
                             });
                         </script>
                     @endif
+                  
 
                     <form action="{{ route('usuarios.store') }}" method="POST" id="crearUsuarioForm">
                         @csrf
@@ -35,18 +36,23 @@
                                 <input type="text" name="id_cedula" id="id_cedula" class="form-control p-3 shadow-sm" required>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <label for="tipo_cedula" class="form-label fw-semibold">Tipo de Cédula</label>
-                                <input type="text" name="tipo_cedula" id="tipo_cedula" class="form-control p-3 shadow-sm" required>
-                            </div>
+    <label for="tipo_cedula" class="form-label fw-semibold">Tipo de Cédula</label>
+    <select name="tipo_cedula" id="tipo_cedula" class="form-select p-3 shadow-sm" required>
+        <option value="NAC">Nacional</option>
+        <option value="EXT">Extranjero</option>
+    </select>
+</div>
+
                         </div>
 
                         <div class="mb-4">
                             <label for="id_empresa" class="form-label fw-semibold">Empresa</label>
                             <select name="id_empresa" id="id_empresa" class="form-select p-3 shadow-sm" required>
-                                @foreach ($empresas as $empresa)
-                                    <option value="{{ $empresa->id_empresa }}">{{ $empresa->nombre_empresa }}</option>
-                                @endforeach
-                            </select>
+    @foreach ($empresas as $empresa)
+        <option value="{{ $empresa['id_empresa'] }}">{{ $empresa['nombre'] }}</option>
+    @endforeach
+</select>
+
                         </div>
 
                         <div class="row">
@@ -76,17 +82,22 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label for="rol" class="form-label fw-semibold">Rol</label>
-                                <input type="text" name="rol" id="rol" class="form-control p-3 shadow-sm" required>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="estado" class="form-label fw-semibold">Estado</label>
-                                <select id="estado" class="form-select p-3 shadow-sm" name="estado" required>
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
-                            </div>
+                        <div class="col-md-6 mb-4">
+    <label for="rol" class="form-label fw-semibold">Rol</label>
+    <select name="rol" id="rol" class="form-select p-3 shadow-sm" required>
+        <option value="ADMI">Admin</option>
+        <option value="AYUD">Ayudante</option>
+    </select>
+</div>
+
+<div class="col-md-6 mb-4">
+    <label for="estado" class="form-label fw-semibold">Estado</label>
+    <select id="estado" class="form-select p-3 shadow-sm" name="estado" required>
+        <option value="1">Activo</option>
+        <option value="0">Inactivo</option>
+    </select>
+</div>
+
                         </div>
 
                         <div class="d-flex justify-content-between">

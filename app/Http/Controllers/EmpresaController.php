@@ -29,19 +29,24 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+        // Generar un nuevo ID si no se proporciona
+        $nuevoId = Empresa::max('id_empresa') + 1; // Obtiene el último ID y suma 1
+    
+        $request->merge(['id_empresa' => $nuevoId]);
+    
         $request->validate([
-            'nombre' => 'required',
-            'cedula' => 'required',
-            'tipo_cedula' => 'required',
-            'telefono' => 'required',
-            'correo' => 'required|email',
-            'estado' => 'required',
+            'id_empresa' => 'required|integer|unique:tbempresa,id_empresa',
+            'nombre' => 'required|string|max:255',
+            'cedula' => 'required|string|max:20|unique:tbempresa,cedula',
+            'tipo_cedula' => 'required|in:FI,JU',
+            'telefono' => 'required|string|max:20|regex:/^[0-9]+$/',
+            'correo' => 'required|email|max:255|unique:tbempresa,correo',
+            'estado' => 'required|boolean',
         ]);
-
+    
         Empresa::create($request->all());
-
-        return redirect()->route('empresas.index')
-                         ->with('success', 'Empresa creada exitosamente.');
+    
+        return redirect()->route('empresas.index')->with('success', 'Empresa creada correctamente.');
     }
 
     /**
