@@ -3,6 +3,10 @@
     @vite(['resources/css/userEdit.css'])
 @endpush
 
+@push('styles')
+    @vite(['resources/css/userEdit.css'])
+@endpush
+
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
