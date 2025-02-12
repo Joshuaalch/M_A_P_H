@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @push('styles')
     <!-- Include custom styles for the user edit page -->
     @vite(['resources/css/userEdit.css'])
