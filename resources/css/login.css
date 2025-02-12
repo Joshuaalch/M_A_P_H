@@ -1,8 +1,8 @@
-/* Logo independiente arriba del formulario */
+/* Independent logo above the form */
 .logo {
-    width: 150px !important;  /* Tamaño ajustado */
-    height: auto !important;  /* Mantiene la proporción */
-    margin-bottom: 5px !important; /* Espacio entre el logo y el formulario */
+    width: 150px !important;  /* Adjusted size */
+    height: auto !important;  /* Maintains the proportion */
+    margin-bottom: 5px !important; /* Space between the logo and the form */
 }
 
 .logo-container img.logo {
@@ -11,34 +11,34 @@
 }
 
 
-/* Estilos de la Barra de Navegación */
+/* Navigation Bar Styles */
 .navbar {
-    padding: 0.3rem 1rem; /* Ajustado para que sea más angosta */
-    height: 50px; /* Reducida la altura */
+    padding: 0.3rem 1rem; /* Adjusted to be narrower */
+    height: 50px; /* Reduced height */
     background: linear-gradient(135deg, #e3f2fd, #bbdefb);
     display: flex;
     align-items: center;
 }
 
-/* Logo en la barra de navegación */
+/* Logo in the navigation bar */
 .logo-navbar {
-    height: 40px; /* Ajustado tamaño del logo */
+    height: 40px; /* Adjusted logo size */
     width: auto;
 }
 
-/* Menú de navegación */
+/* Navigation menu */
 .navbar-nav {
     margin-left: auto;
 }
 
 .nav-item {
-    margin-left: 15px; /* Ajustado el espacio entre los ítems */
+    margin-left: 15px; /* Adjusted space between items */
 }
 
 .nav-link {
     color: #000;
     font-weight: bold;
-    font-size: 14px; /* Reducido el tamaño de la fuente */
+    font-size: 14px; /* Reduced font size */
     transition: color 0.3s ease;
 }
 
@@ -46,22 +46,22 @@
     color: #1e88e5;
 }
 
-/* Botón responsive */
+/* Responsive button */
 .navbar-toggler {
     border: none;
     background: none;
 }
 
-/* Fondo y contenedor principal */
+/* Main container and background */
 .container {
     justify-content: center;
     align-items: center;
     min-height: 10vh;
     color: #000;
-    margin-top: -20px; /* Subir el formulario */
+    margin-top: -20px; /* Moves the form up */
 }
 
-/* Tarjeta de login */
+/* Login Card */
 .card {
     border: none;
     border-radius: 15px;
@@ -85,7 +85,7 @@
     }
 }
 
-/* Título del formulario */
+/* Form title */
 .card-title {
     color: #ff69b4;
     text-align: center;
@@ -106,7 +106,7 @@
     border-color: #1e88e5;
 }
 
-/* Botón de login */
+/* Login button */
 .btn-primary {
     background: linear-gradient(135deg, #90caf9, rgb(241, 165, 207));
     border: none;
@@ -123,7 +123,7 @@
     transform: scale(1.05);
 }
 
-/* Enlace de recuperación */
+/* Recovery link */
 a {
     color: rgb(245, 95, 120);
     text-decoration: none;
@@ -138,7 +138,7 @@ a:hover {
     color: #64b5f6;
 }
 
-/* Adaptabilidad en pantallas pequeñas */
+/* Adaptability for small screens */
 @media (max-width: 576px) {
     .card-body {
         padding: 1.5rem;
