@@ -6,42 +6,42 @@
         <div class="col-md-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
-                    {{ __('Confirmar Contraseña') }}
+                    {{ __('Confirm Password') }} <!-- Header for password confirmation -->
                 </div>
 
                 <div class="card-body">
                     <p class="mb-3">
-                        {{ __('Por favor, confirma tu contraseña antes de continuar.') }}
+                        {{ __('Please confirm your password before continuing.') }} <!-- Instruction to confirm the password -->
                     </p>
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
 
-                        <!-- Campo de Contraseña -->
+                        <!-- Password Field -->
                         <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
+                            <label for="password" class="form-label">Password</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                                    name="password" required autocomplete="current-password"
-                                   placeholder="Ingresa tu contraseña">
+                                   placeholder="Enter your password">
                             @error('password')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    {{ $message }} <!-- Display error message if validation fails -->
                                 </div>
                             @enderror
                         </div>
 
-                        <!-- Botón de Confirmar Contraseña -->
+                        <!-- Confirm Password Button -->
                         <div class="d-grid mb-3">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Confirmar Contraseña') }}
+                                {{ __('Confirm Password') }} <!-- Button text for confirming the password -->
                             </button>
                         </div>
 
-                        <!-- Enlace para Recuperar Contraseña -->
+                        <!-- Link to Reset Password -->
                         @if (Route::has('password.request'))
                             <div class="text-center">
                                 <a href="{{ route('password.request') }}" class="text-decoration-none">
-                                    {{ __('¿Olvidaste tu contraseña?') }}
+                                    {{ __('Forgot Your Password?') }} <!-- Link for password recovery -->
                                 </a>
                             </div>
                         @endif

@@ -1,28 +1,28 @@
-/* Barra de Navegación */
+/* Navigation Bar */
 nav.navbar {
     padding: 0.2rem 0.2rem; 
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Fondo degradado celeste pastel */
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Pastel light blue gradient background */
     color: #000;
 }
 
-/* Contenedor principal */
+/* Main container */
 .container {
     justify-content: center;
     align-items: center;
     min-height: 10vh;
     color: #000;
-    margin-left: 190px;  /* Ajusta este valor según sea necesario */
+    margin-left: 190px;  /* Adjust this value as needed */
 }
 
-/* Tarjeta de registro */
+/* Registration card */
 .card {
     border: none;
     border-radius: 15px;
-    background: linear-gradient(135deg, #bbdefb, rgb(185, 243, 243)); /* Fondo claro */
+    background: linear-gradient(135deg, #bbdefb, rgb(185, 243, 243)); /* Light background */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transform: translateY(-100px);
     animation: slideIn 0.8s ease forwards;

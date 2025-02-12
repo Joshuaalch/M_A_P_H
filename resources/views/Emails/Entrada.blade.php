@@ -6,19 +6,19 @@
         <div class="col-md-12">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
-                    <i class="fas fa-inbox me-2"></i> {{ __('Bandeja de Entrada') }}
+                    <i class="fas fa-inbox me-2"></i> {{ __('Inbox') }}
                 </div>
 
                 <div class="card-body">
-                    <!-- Tabla de Mensajes -->
+                    <!-- Message Table: Displays the list of messages in the inbox -->
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>De</th>
-                                    <th>Asunto</th>
-                                    <th>Fecha</th>
-                                    <th>Acciones</th>
+                                    <th>From</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,8 +28,9 @@
                                         <td>{{ $message->subject }}</td>
                                         <td>{{ $message->date->format('d/m/Y H:i') }}</td>
                                         <td>
+                                            <!-- View Message Button: Allows the user to view the details of the message -->
                                             <a href="{{ route('messages.show', $message->id) }}" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-eye me-1"></i> Ver
+                                                <i class="fas fa-eye me-1"></i> View
                                             </a>
                                         </td>
                                     </tr>

@@ -6,7 +6,12 @@
     <title>Respuesta a tu mensaje</title>
 </head>
 <body>
+    <!-- Main Title: Title of the email response, indicating it's a reply -->
     <h1>Respuesta a tu mensaje</h1>
+    
+    <!-- Displaying the actual response content -->
     <p>{{ $response }}</p>
+
+    <!-- Additional note: Consider adding a thank you message or signature if needed -->
 </body>
 </html>

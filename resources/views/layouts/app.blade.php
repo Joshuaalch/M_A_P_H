@@ -14,7 +14,6 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-
    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
    @stack('styles')
 
@@ -22,38 +21,38 @@
 <body>
     
     <div id="app">
-        <!-- Barra de Navegación -->
+        <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
             <!-- <a class="navbar-brand" href="{{ url('/') }}">
     {{ config('app.name', 'MAPH') }}
 </a> -->
 
-                <!-- Botón para Menú en Dispositivos Móviles -->
+                <!-- Mobile Menu Button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Contenido del Menú -->
+                <!-- Menu Content -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Lado Izquierdo del Menú -->
+                    <!-- Left Side of the Menu -->
                     <ul class="navbar-nav me-auto">
-                        <!-- Puedes agregar enlaces adicionales aquí -->
+                        <!-- You can add additional links here -->
                     </ul>
 
-                    <!-- Lado Derecho del Menú -->
+                    <!-- Right Side of the Menu -->
                     <ul class="navbar-nav ms-auto">
-                        <!-- Enlaces de Autenticación -->
+                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                                    <a class="nav-link" href="{{ route('login') }}">Login</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Register</a>
                                 </li>
                             @endif
                         @else
@@ -62,22 +61,22 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <!-- Menú Desplegable del Usuario -->
+                                <!-- User Dropdown Menu -->
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a
     href="{{ route('profile.edit') }}"
     class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
 >
-    Editar Perfil
+    Edit Profile
 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        Cerrar Sesión
+                                        Logout
                                     </a>
                                    
 
-                                    <!-- Formulario de Cierre de Sesión -->
+                                    <!-- Logout Form -->
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -89,7 +88,7 @@
             </div>
         </nav>
 
-        <!-- Contenido Principal -->
+        <!-- Main Content -->
         <main class="py-4">
             @yield('content')
         </main>

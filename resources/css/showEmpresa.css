@@ -6,7 +6,7 @@ nav.navbar {
     color: #000;
 }
 
-/* Contenedor principal */
+/* Main container */
 .container {
     position: relative;
     left: 50%;
@@ -15,7 +15,7 @@ nav.navbar {
     color: #000000;
 }
 
-/* Tarjeta de detalles */
+/* Details card */
 .card {
     border: none;
     border-radius: 15px;
@@ -38,7 +38,7 @@ nav.navbar {
     }
 }
 
-/* Estilo del título del formulario */
+/* Form title styling */
 .card-header {
     background-color: rgb(248, 167, 198);
     color: rgb(248, 167, 198);
@@ -52,13 +52,13 @@ nav.navbar {
     color: rgb(245, 132, 220);
 }
 
-/* Estilo de los párrafos */
+/* Paragraph styling */
 .card-body p {
     font-size: 1.2rem;
     margin-bottom: 15px;
 }
 
-/* Estilo para los botones */
+/* Button styling */
 button, .btn {
     width: 48%;
     padding: 12px;
@@ -70,7 +70,7 @@ button, .btn {
     margin: 0.5rem;
 }
 
-/* Botones secundarios y primarios */
+/* Secondary and primary buttons */
 .btn-outline-secondary, .btn-outline-primary, .btn-outline-danger {
     padding: 12px 25px;
     border-radius: 25px;
@@ -84,7 +84,7 @@ button, .btn {
     transform: scale(1.05);
 }
 
-/* Estilo para enlaces */
+/* Link styling */
 a {
     color: rgb(245, 95, 120);
     text-decoration: none;
@@ -99,7 +99,7 @@ a:hover {
     color: #64b5f6;
 }
 
-/* Ajustes para pantallas pequeñas */
+/* Adjustments for small screens */
 @media (max-width: 576px) {
     .container {
         left: 0;
