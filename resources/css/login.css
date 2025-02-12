@@ -1,27 +1,55 @@
-/* Barra de Navegación */
-nav.navbar {
-    padding: 0.2rem 0.2rem; 
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    background-color: #2c3e50;
+/* Logo independiente arriba del formulario */
+.logo {
+    width: 150px !important;  /* Tamaño ajustado */
+    height: auto !important;  /* Mantiene la proporción */
+    margin-bottom: 5px !important; /* Espacio entre el logo y el formulario */
+}
+
+.logo-container img.logo {
+    height: 80px;
+    width: auto;
+}
+
+
+/* Estilos de la Barra de Navegación */
+.navbar {
+    padding: 0.3rem 1rem; /* Ajustado para que sea más angosta */
+    height: 50px; /* Reducida la altura */
     background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    color: #000;
-}
-
-.navbar-nav {
     display: flex;
-    justify-content: space-between;
-    background: linear-gradient(135deg, #bbdefb, #90caf9);
-    color: #000;
+    align-items: center;
 }
 
-.navbar-toggler {
-    padding: 0.25rem 0.5rem;
-    font-size: 1rem;
-    background: linear-gradient(135deg, #e3f2fd, #64b5f6);
+/* Logo en la barra de navegación */
+.logo-navbar {
+    height: 40px; /* Ajustado tamaño del logo */
+    width: auto;
+}
+
+/* Menú de navegación */
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    margin-left: 15px; /* Ajustado el espacio entre los ítems */
+}
+
+.nav-link {
     color: #000;
+    font-weight: bold;
+    font-size: 14px; /* Reducido el tamaño de la fuente */
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #1e88e5;
+}
+
+/* Botón responsive */
+.navbar-toggler {
+    border: none;
+    background: none;
 }
 
 /* Fondo y contenedor principal */
@@ -30,23 +58,25 @@ nav.navbar {
     align-items: center;
     min-height: 10vh;
     color: #000;
+    margin-top: -20px; /* Subir el formulario */
 }
 
 /* Tarjeta de login */
 .card {
     border: none;
     border-radius: 15px;
-    background: linear-gradient(135deg, #bbdefb, rgb(185, 243, 243));
+    background: linear-gradient(135deg, #dbedff, rgb(185, 243, 243));
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transform: translateY(-100px);
+    transform: translateY(-50px);
     animation: slideIn 0.8s ease forwards;
     width: 100%;
     max-width: 400px;
 }
 
+
 @keyframes slideIn {
     from {
-        transform: translateY(-100px);
+        transform: translateY(-50px);
         opacity: 0;
     }
     to {
@@ -55,22 +85,19 @@ nav.navbar {
     }
 }
 
-.card-body {
-    padding: 2rem;
-}
-
+/* Título del formulario */
 .card-title {
-    color: rgb(252, 147, 212);
+    color: #ff69b4;
     text-align: center;
     font-size: 2rem;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
 }
 
-/* Estilo de los inputs */
+/* Inputs */
 .form-control {
     border-radius: 10px;
-    border: 1px solid #2980b9;
+    border: 1px solid #fc6dc5;
     transition: border-color 0.3s ease;
 }
 
@@ -79,11 +106,7 @@ nav.navbar {
     border-color: #1e88e5;
 }
 
-.form-control:invalid {
-    border-color: rgb(248, 165, 204);
-}
-
-/* Estilo del botón */
+/* Botón de login */
 .btn-primary {
     background: linear-gradient(135deg, #90caf9, rgb(241, 165, 207));
     border: none;
@@ -91,7 +114,6 @@ nav.navbar {
     padding: 10px;
     font-size: 1.1rem;
     font-weight: bold;
-    letter-spacing: 1px;
     transition: transform 0.3s ease;
     width: 100%;
 }

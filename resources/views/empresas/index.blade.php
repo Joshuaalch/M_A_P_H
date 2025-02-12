@@ -30,8 +30,7 @@
                     <th>Tipo</th>
                     <th>Teléfono</th>
                     <th>Correo</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
+                    <th>Acciones</th> <!-- Eliminamos la columna Estado -->
                 </tr>
             </thead>
             <tbody id="empresaTable">
@@ -42,11 +41,6 @@
                         <td>{{ $empresa->tipo_cedula }}</td>
                         <td>{{ $empresa->telefono }}</td>
                         <td>{{ $empresa->correo }}</td>
-                        <td>
-                            <span class="badge {{ $empresa->estado == 'Activo' ? 'bg-success' : 'bg-danger' }}">
-                                {{ $empresa->estado }}
-                            </span>
-                        </td>
                         <td>
                             <div class="d-flex justify-content-center gap-2">
                                 <a href="{{ route('empresas.show', $empresa->id_empresa) }}" class="btn btn-outline-info btn-sm" title="Ver Detalles">

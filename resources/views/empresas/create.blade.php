@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('styles')
+    @vite(['resources/css/createEmpresa.css'])
+@endpush
 
 
 <style>
@@ -127,12 +130,14 @@ a:hover {
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card border-0 shadow-lg rounded-4">
-                <div class="card-header bg-gradient text-white text-center py-4 rounded-top" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
-                    <h2 class="fw-bold">Crear nueva empresa </h2>
+            <!-- Tarjeta de registro con la clase .card -->
+            <div class="card">
+                <div class="card-header text-white text-center py-4" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
+                    <h2 class="fw-bold">Crear Nueva Empresa</h2>
                 </div>
                 
                 <div class="card-body p-5">
+                    <!-- Mostrar éxito con SweetAlert -->
                     @if (session('success'))
                         <script>
                             Swal.fire({
@@ -148,12 +153,14 @@ a:hover {
                     <form action="{{ route('empresas.store') }}" method="POST" id="empresaForm">
                         @csrf
 
+                        <!-- Campo Nombre de la Empresa -->
                         <div class="mb-4">
                             <label for="nombre" class="form-label fw-semibold">Nombre de la Empresa</label>
                             <input id="nombre" type="text" class="form-control p-3 shadow-sm @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required placeholder="Ejemplo S.A.">
                             @error('nombre')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
+                        <!-- Campos de Cédula y Tipo de Cédula -->
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label for="cedula" class="form-label fw-semibold">Cédula</label>
@@ -161,12 +168,16 @@ a:hover {
                                 @error('cedula')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="col-md-6 mb-4">
-                                <label for="tipo_cedula" class="form-label fw-semibold">Tipo de Cédula</label>
-                                <input id="tipo_cedula" type="text" class="form-control p-3 shadow-sm @error('tipo_cedula') is-invalid @enderror" name="tipo_cedula" value="{{ old('tipo_cedula') }}" required>
-                                @error('tipo_cedula')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                            </div>
-                        </div>
+    <label for="tipo_cedula" class="form-label fw-semibold">Tipo de Cédula</label>
+    <select id="tipo_cedula" class="form-select p-3 shadow-sm @error('tipo_cedula') is-invalid @enderror" name="tipo_cedula" required>
+        <option value="FI" {{ old('tipo_cedula') == 'FI' ? 'selected' : '' }}>Física</option>
+        <option value="JU" {{ old('tipo_cedula') == 'JU' ? 'selected' : '' }}>Jurídica</option>
+    </select>
+    @error('tipo_cedula')<div class="invalid-feedback">{{ $message }}</div>@enderror
+</div>
 
+
+                        <!-- Campos de Teléfono y Correo Electrónico -->
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label for="telefono" class="form-label fw-semibold">Teléfono</label>
@@ -180,15 +191,18 @@ a:hover {
                             </div>
                         </div>
 
-                        <div class="mb-4">
-                            <label for="estado" class="form-label fw-semibold">Estado</label>
-                            <select id="estado" class="form-select p-3 shadow-sm @error('estado') is-invalid @enderror" name="estado" required>
-                                <option value="Activo" {{ old('estado') == 'Activo' ? 'selected' : '' }}>Activo</option>
-                                <option value="Inactivo" {{ old('estado') == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
-                            </select>
-                            @error('estado')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                        </div>
+                <!-- Campo Estado -->
+<div class="mb-4">
+    <label for="estado" class="form-label fw-semibold">Estado</label>
+    <select id="estado" class="form-select p-3 shadow-sm @error('estado') is-invalid @enderror" name="estado" required>
+        <option value="1" {{ old('estado') == '1' ? 'selected' : '' }}>Activo</option>
+        <option value="0" {{ old('estado') == '0' ? 'selected' : '' }}>Inactivo</option>
+    </select>
+    @error('estado')<div class="invalid-feedback">{{ $message }}</div>@enderror
+</div>
 
+
+                        <!-- Botón Guardar -->
                         <div class="d-grid">
                             <button type="submit" class="btn btn-lg btn-primary shadow-sm fw-bold" id="guardarBtn">Guardar Empresa</button>
                         </div>
@@ -224,4 +238,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
+
 @endsection

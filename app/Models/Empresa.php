@@ -12,8 +12,13 @@ class Empresa extends Model
     protected $table = 'tbempresa';
 
     protected $primaryKey = 'id_empresa';
+    public $incrementing = false;
+    protected $keyType = 'int';
+    
+
 
     protected $fillable = [
+      'id_empresa',
         'nombre',
         'cedula',
         'tipo_cedula',

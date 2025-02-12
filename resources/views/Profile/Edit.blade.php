@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('styles')
+    @vite(['resources/css/userEdit.css'])
+@endpush
 
 @push('styles')
     @vite(['resources/css/userEdit.css'])
