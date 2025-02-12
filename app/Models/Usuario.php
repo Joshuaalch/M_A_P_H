@@ -30,9 +30,14 @@ class Usuario extends Model
         'rol',
         'estado',
     ];
-
+    public function mensualidades()
+    {
+        return $this->hasMany(MensualidadUsuario::class, 'id_cedula', 'id_cedula');
+    }
+    
     public function empresa()
     {
         return $this->belongsTo(Empresa::class, 'id_empresa', 'id_empresa');
+        
     }
 }
