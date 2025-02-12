@@ -65,6 +65,7 @@
     <div class="container text-center">
         <h1 class="mb-4">Funcionalidades</h1>
         <div class="row justify-content-center">
+<<<<<<< Updated upstream
             <div class="col-md-4 mb-4">
                 <a href="{{ url('/solicitudes') }}" class="text-decoration-none">
                     <div class="card shadow-sm p-4">
@@ -74,16 +75,19 @@
                 </a>
             </div>
             <div class="col-md-4 mb-4">
+=======
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+>>>>>>> Stashed changes
                 <a href="{{ url('/usuarios') }}" class="text-decoration-none">
-                    <div class="card shadow-sm p-4">
+                    <div class="card shadow-sm p-4 d-flex flex-column align-items-center text-center w-100" style="min-width: 450px;">
                         <i class="fas fa-users fa-2x mb-3 text-primary"></i>
                         <h3 class="text-dark">Asociados</h3>
                     </div>
                 </a>
             </div>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
                 <a href="{{ url('/empresas') }}" class="text-decoration-none">
-                    <div class="card shadow-sm p-4">
+                    <div class="card shadow-sm p-4 d-flex flex-column align-items-center text-center w-100" style="min-width: 450px;">
                         <i class="fas fa-building fa-2x mb-3 text-warning"></i>
                         <h3 class="text-dark">Empresas</h3>
                     </div>
@@ -92,6 +96,8 @@
         </div>
     </div>
 </section>
+
+
 
 <footer class="bg-dark text-light py-4">
     <div class="container text-center">
