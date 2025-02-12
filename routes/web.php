@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\MensualidadUsuarioController;
 
 // Redirigir a /lobby si ya está autenticado y trata de acceder a /login
 Route::middleware('guest')->group(function () {
@@ -53,3 +54,10 @@ Route::get('/', function () {
 
 // Autenticación
 Auth::routes(); // Se habilitan todas las rutas de autenticación, incluyendo register
+
+
+Route::get('/usuarios/{id_cedula}/mensualidades', [MensualidadUsuarioController::class, 'index'])->name('mensualidad.index');
+Route::post('/mensualidad', [MensualidadUsuarioController::class, 'store'])->name('mensualidad.store');
+Route::delete('/mensualidad/{id}', [MensualidadUsuarioController::class, 'destroy'])->name('mensualidad.destroy');
+Route::get('/mensualidad/{id}/edit', [MensualidadUsuarioController::class, 'edit'])->name('mensualidad.edit');
+Route::put('/mensualidad/{id}', [MensualidadUsuarioController::class, 'update'])->name('mensualidad.update');
