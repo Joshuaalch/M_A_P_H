@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<<<<<<< Updated upstream
 <style>
 /* Barra de Navegación */
 nav.navbar {
@@ -116,6 +117,8 @@ nav.navbar {
     }
 }
 </style>
+=======
+>>>>>>> Stashed changes
 
 @push('styles')
     @vite(['resources/css/userEdit.css'])

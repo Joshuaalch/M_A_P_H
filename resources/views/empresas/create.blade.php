@@ -1,8 +1,10 @@
 @extends('layouts.app')
+
 @push('styles')
     @vite(['resources/css/createEmpresa.css'])
 @endpush
 
+<<<<<<< Updated upstream
 
 <style>
         
@@ -126,6 +128,8 @@ a:hover {
 </style>
 
 
+=======
+>>>>>>> Stashed changes
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">

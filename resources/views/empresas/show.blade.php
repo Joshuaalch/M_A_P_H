@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<<<<<<< Updated upstream
 <style>
     /* Barra de Navegación */
 nav.navbar {
@@ -117,6 +118,8 @@ a:hover {
 }
 
     </style>
+=======
+>>>>>>> Stashed changes
 
 @push('styles')
     @vite(['resources/css/showEmpresa.css'])
