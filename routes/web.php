@@ -7,23 +7,24 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\MensualidadUsuarioController;
 
-// Redirigir a /lobby si ya está autenticado y trata de acceder a /login
+// Redirect to /lobby if already authenticated and trying to access /login
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
         if (Auth::check()) {
-            return redirect()->route('lobby'); // Redirigir al lobby si está logueado
+            return redirect()->route('lobby'); // Redirect to lobby if logged in
         }
         return view('auth.login');
     })->name('login');
 });
 
-// Permitir el acceso a /register sin restricciones
+// Allow access to /register without restrictions
 Route::get('/register', function () {
-    return view('auth.register'); // Permite que el usuario se registre normalmente
+    return view('auth.register'); // Allows user to register normally
 })->name('register');
 
-// Rutas protegidas por autenticación (solo para usuarios logueados)
+// Protected routes (only for authenticated users)
 Route::middleware(['auth'])->group(function () {
     Route::get('/lobby', function () {
         return view('lobby');
@@ -46,10 +47,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
-// Página de bienvenida accesible sin autenticación
+// Welcome page accessible without authentication
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Autenticación
-Auth::routes(); // Se habilitan todas las rutas de autenticación, incluyendo register
+// Authentication
+Auth::routes(); // Enable all authentication routes, including register
+
+// Monthly payments related routes
+Route::get('/usuarios/{id_cedula}/mensualidades', [MensualidadUsuarioController::class, 'index'])->name('mensualidad.index');
+Route::post('/mensualidad', [MensualidadUsuarioController::class, 'store'])->name('mensualidad.store');
+Route::delete('/mensualidad/{id}', [MensualidadUsuarioController::class, 'destroy'])->name('mensualidad.destroy');
+Route::get('/mensualidad/{id}/edit', [MensualidadUsuarioController::class, 'edit'])->name('mensualidad.edit');
+Route::put('/mensualidad/{id}', [MensualidadUsuarioController::class, 'update'])->name('mensualidad.update');

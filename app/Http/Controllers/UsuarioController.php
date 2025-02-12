@@ -20,6 +20,8 @@ class UsuarioController extends Controller
     public function create()
     {
         $empresas = Empresa::all();
+       // dd($empresas->toArray());
+
         return view('usuarios.create', compact('empresas'));
     }
 
@@ -35,8 +37,9 @@ class UsuarioController extends Controller
             'correo' => 'required|email|unique:tbusuario',
             'contrasena' => 'required',
             'rol' => 'required',
-            'estado' => 'required',
+            'estado' => 'required|in:0,1',
         ]);
+    
 
         Usuario::create($request->all());
 

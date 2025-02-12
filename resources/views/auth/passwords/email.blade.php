@@ -6,36 +6,36 @@
         <div class="col-md-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
-                    {{ __('Restablecer Contraseña') }}
+                    {{ __('Reset Password') }} <!-- Header for password reset page -->
                 </div>
 
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('status') }} <!-- Success message if status is set -->
                         </div>
                     @endif
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
-                        <!-- Campo de Correo Electrónico -->
+                        <!-- Email Field -->
                         <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <label for="email" class="form-label">Email Address</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
-                                   placeholder="Ingresa tu correo electrónico">
+                                   placeholder="Enter your email address">
                             @error('email')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    {{ $message }} <!-- Display error message if validation fails -->
                                 </div>
                             @enderror
                         </div>
 
-                        <!-- Botón de Enviar Enlace de Restablecimiento -->
+                        <!-- Send Password Reset Link Button -->
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Enviar Enlace de Restablecimiento') }}
+                                {{ __('Send Password Reset Link') }} <!-- Button text to send the reset link -->
                             </button>
                         </div>
                     </form>

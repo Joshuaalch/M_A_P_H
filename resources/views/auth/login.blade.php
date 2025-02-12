@@ -1,72 +1,75 @@
-
 @extends('layouts.app')
 
 @push('styles')
+    <!-- Linking the login.css file using Vite -->
     @vite(['resources/css/login.css'])
 @endpush
 
 @section('content')
-<!-- Logo independiente arriba del formulario -->
+<!-- Independent Logo above the form -->
 <div class="logo-container text-center">
-    <img src="{{ asset('storage/img/logo1.png') }}" alt="Logo MAPH" class="logo">
+    <img src="{{ asset('storage/img/logo1.png') }}" alt="MAPH Logo" class="logo">
 </div>
 
-<!-- Contenedor del login -->
+<!-- Login Form Container -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
             <div class="card shadow-sm">
                 <div class="card-body p-4">
-                    <h2 class="card-title text-center mb-4">Iniciar Sesión</h2>
+                    <!-- Title for the login form -->
+                    <h2 class="card-title text-center mb-4">Log In</h2>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <!-- Campo de Correo Electrónico -->
+                        <!-- Email Field -->
                         <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <label for="email" class="form-label">Email Address</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
-                                   placeholder="Ingresa tu correo electrónico">
+                                   placeholder="Enter your email address">
                             @error('email')
+                                <!-- Error message if validation fails for email -->
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
 
-                        <!-- Campo de Contraseña -->
+                        <!-- Password Field -->
                         <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
+                            <label for="password" class="form-label">Password</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                                    name="password" required autocomplete="current-password"
-                                   placeholder="Ingresa tu contraseña">
+                                   placeholder="Enter your password">
                             @error('password')
+                                <!-- Error message if validation fails for password -->
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
 
-                        <!-- Checkbox "Recordarme" -->
+                        <!-- Remember Me Checkbox -->
                         <div class="mb-3 form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label" for="remember">
-                                Recordarme
+                                Remember Me
                             </label>
                         </div>
 
-                        <!-- Botón de Iniciar Sesión -->
+                        <!-- Login Button -->
                         <div class="d-grid mb-3">
                             <button type="submit" class="btn btn-primary">
-                                Iniciar Sesión
+                                Log In
                             </button>
                         </div>
 
-                        <!-- Enlace para Recuperar Contraseña -->
+                        <!-- Link to Reset Password -->
                         @if (Route::has('password.request'))
                             <div class="text-center">
                                 <a href="{{ route('password.request') }}" class="text-decoration-none">
-                                    ¿Olvidaste tu contraseña?
+                                    Forgot your password?
                                 </a>
                             </div>
                         @endif

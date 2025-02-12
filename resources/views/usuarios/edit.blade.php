@@ -1,7 +1,7 @@
 @extends('layouts.app')
 <<<<<<< Updated upstream
 <style>
-/* Barra de Navegación */
+/* Navigation Bar */
 nav.navbar {
     padding: 0.2rem 0.2rem;
     width: 100%;
@@ -10,17 +10,17 @@ nav.navbar {
     color: #000;
 }
 
-/* Contenedor principal */
+/* Main container */
 .container {
     position: relative;
-    left: 50%; /* Mover el contenedor al 50% de la pantalla */
-    transform: translateX(-50%); /* Ajuste para centrar completamente */
+    left: 50%; /* Moves the container to the 50% of the screen */
+    transform: translateX(-50%); /* Adjustment to fully center */
     min-height: 10vh;
     color: #000000;
-    padding-right: 20px; /* Para evitar el desbordamiento */
+    padding-right: 20px; /* To avoid overflow */
 }
 
-/* Tarjeta de registro */
+/* Registration card */
 .card {
     border: none;
     border-radius: 15px;
@@ -32,6 +32,7 @@ nav.navbar {
     max-width: 480px;
 }
 
+/* Slide-in animation for the card */
 @keyframes slideIn {
     from {
         transform: translateY(-100px);
@@ -43,9 +44,9 @@ nav.navbar {
     }
 }
 
-/* Estilo del título del formulario */
+/* Form title styling */
 .card-header {
-    background-color: rgb(248, 167, 198); /* Fondo de la cabecera */
+    background-color: rgb(248, 167, 198); /* Header background */
     color: rgb(248, 167, 198);
     text-align: center;
     padding: 1rem;
@@ -54,10 +55,10 @@ nav.navbar {
 }
 
 .card-header h2 {
-    color:rgb(245, 132, 220); /* Cambia el color del texto del título específicamente */
+    color:rgb(245, 132, 220); /* Change the title text color specifically */
 }
 
-/* Estilo de los campos de entrada */
+/* Input fields styling */
 .form-control {
     border-radius: 10px;
     border: 1px solid #2980b9;
@@ -70,7 +71,7 @@ nav.navbar {
     border-color: #1e88e5;
 }
 
-/* Estilo para select */
+/* Select fields styling */
 .form-select {
     border-radius: 10px;
     border: 1px solid #2980b9;
@@ -83,7 +84,7 @@ nav.navbar {
     border-color: #1e88e5;
 }
 
-/* Botón común */
+/* Common button styling */
 .btn-common {
     background: linear-gradient(135deg, rgb(113, 192, 245), rgb(253, 132, 199));
     border: none;
@@ -102,7 +103,7 @@ nav.navbar {
     transform: scale(1.05);
 }
 
-/* Ajustes para pantallas pequeñas */
+/* Adjustments for small screens */
 @media (max-width: 576px) {
     .card-body {
         padding: 1.5rem;
@@ -112,7 +113,7 @@ nav.navbar {
     }
     .container {
         left: 0;
-        transform: translateX(0); /* Sin desplazamiento en pantallas pequeñas */
+        transform: translateX(0); /* No displacement on small screens */
         padding-right: 0;
     }
 }
@@ -129,16 +130,18 @@ nav.navbar {
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-0 shadow-lg rounded-4">
+                <!-- Card Header with Gradient Background -->
                 <div class="card-header bg-gradient text-white text-center py-4 rounded-top" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
-                    <h2 class="fw-bold">Editar Usuario</h2>
+                    <h2 class="fw-bold">Edit User</h2>
                 </div>
                 
                 <div class="card-body p-5">
+                    <!-- Display Success Message -->
                     @if (session('success'))
                         <script>
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Éxito',
+                                title: 'Success',
                                 text: '{{ session('success') }}',
                                 timer: 3000,
                                 showConfirmButton: false
@@ -146,22 +149,26 @@ nav.navbar {
                         </script>
                     @endif
 
-                    <form action="{{ route('usuarios.update', $usuario->id_cedula) }}" method="POST" id="editarUsuarioForm">
+                    <!-- Form to Edit User Information -->
+                    <form action="{{ route('usuarios.update', $usuario->id_cedula) }}" method="POST" id="editUserForm">
                         @csrf
                         @method('PUT')
 
+                        <!-- ID Number (Read-Only) -->
                         <div class="mb-4">
-                            <label for="id_cedula" class="form-label fw-semibold">Cédula</label>
+                            <label for="id_cedula" class="form-label fw-semibold">ID Number</label>
                             <input type="text" name="id_cedula" id="id_cedula" class="form-control p-3 shadow-sm" value="{{ $usuario->id_cedula }}" readonly>
                         </div>
 
+                        <!-- ID Type Field -->
                         <div class="mb-4">
-                            <label for="tipo_cedula" class="form-label fw-semibold">Tipo de Cédula</label>
+                            <label for="tipo_cedula" class="form-label fw-semibold">ID Type</label>
                             <input type="text" name="tipo_cedula" id="tipo_cedula" class="form-control p-3 shadow-sm" value="{{ $usuario->tipo_cedula }}" required>
                         </div>
 
+                        <!-- Company Dropdown -->
                         <div class="mb-4">
-                            <label for="id_empresa" class="form-label fw-semibold">Empresa</label>
+                            <label for="id_empresa" class="form-label fw-semibold">Company</label>
                             <select name="id_empresa" id="id_empresa" class="form-select p-3 shadow-sm" required>
                                 @foreach ($empresas as $empresa)
                                     <option value="{{ $empresa->id_empresa }}" {{ $usuario->id_empresa == $empresa->id_empresa ? 'selected' : '' }}>
@@ -171,47 +178,55 @@ nav.navbar {
                             </select>
                         </div>
 
+                        <!-- First Name Field -->
                         <div class="mb-4">
-                            <label for="nombre" class="form-label fw-semibold">Nombre</label>
+                            <label for="nombre" class="form-label fw-semibold">First Name</label>
                             <input type="text" name="nombre" id="nombre" class="form-control p-3 shadow-sm" value="{{ $usuario->nombre }}" required>
                         </div>
 
+                        <!-- Last Name Field -->
                         <div class="mb-4">
-                            <label for="apellidos" class="form-label fw-semibold">Apellidos</label>
+                            <label for="apellidos" class="form-label fw-semibold">Last Name</label>
                             <input type="text" name="apellidos" id="apellidos" class="form-control p-3 shadow-sm" value="{{ $usuario->apellidos }}" required>
                         </div>
 
+                        <!-- Phone Number Field -->
                         <div class="mb-4">
-                            <label for="telefono" class="form-label fw-semibold">Teléfono</label>
+                            <label for="telefono" class="form-label fw-semibold">Phone</label>
                             <input type="text" name="telefono" id="telefono" class="form-control p-3 shadow-sm" value="{{ $usuario->telefono }}" required>
                         </div>
 
+                        <!-- Email Field -->
                         <div class="mb-4">
-                            <label for="correo" class="form-label fw-semibold">Correo</label>
+                            <label for="correo" class="form-label fw-semibold">Email</label>
                             <input type="email" name="correo" id="correo" class="form-control p-3 shadow-sm" value="{{ $usuario->correo }}" required>
                         </div>
 
+                        <!-- Password Field (Optional) -->
                         <div class="mb-4">
-                            <label for="contrasena" class="form-label fw-semibold">Contraseña (opcional)</label>
+                            <label for="contrasena" class="form-label fw-semibold">Password (optional)</label>
                             <input type="password" name="contrasena" id="contrasena" class="form-control p-3 shadow-sm">
                         </div>
 
+                        <!-- Role Field -->
                         <div class="mb-4">
-                            <label for="rol" class="form-label fw-semibold">Rol</label>
+                            <label for="rol" class="form-label fw-semibold">Role</label>
                             <input type="text" name="rol" id="rol" class="form-control p-3 shadow-sm" value="{{ $usuario->rol }}" required>
                         </div>
 
+                        <!-- Status Dropdown -->
                         <div class="mb-4">
-                            <label for="estado" class="form-label fw-semibold">Estado</label>
+                            <label for="estado" class="form-label fw-semibold">Status</label>
                             <select id="estado" class="form-select p-3 shadow-sm" name="estado" required>
-                                <option value="Activo" {{ $usuario->estado == 'Activo' ? 'selected' : '' }}>Activo</option>
-                                <option value="Inactivo" {{ $usuario->estado == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                <option value="Activo" {{ $usuario->estado == 'Activo' ? 'selected' : '' }}>Active</option>
+                                <option value="Inactivo" {{ $usuario->estado == 'Inactivo' ? 'selected' : '' }}>Inactive</option>
                             </select>
                         </div>
 
+                        <!-- Submit Button and Back Link -->
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('usuarios.index') }}" class="btn btn-common shadow-sm px-4 py-2">Volver</a>
-                            <button type="submit" class="btn btn-common btn-lg shadow-sm fw-bold px-4 py-2" id="actualizarBtn">Actualizar</button>
+                            <a href="{{ route('usuarios.index') }}" class="btn btn-common shadow-sm px-4 py-2">Back</a>
+                            <button type="submit" class="btn btn-common btn-lg shadow-sm fw-bold px-4 py-2" id="updateBtn">Update</button>
                         </div>
                     </form>
                 </div>
@@ -220,23 +235,24 @@ nav.navbar {
     </div>
 </div>
 
-<!-- Importar SweetAlert2 -->
+<!-- Import SweetAlert2 for Displaying Alerts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('editarUsuarioForm').addEventListener('submit', function (event) {
+    // Form Submission Confirmation
+    document.getElementById('editUserForm').addEventListener('submit', function (event) {
         event.preventDefault();
 
         Swal.fire({
-            title: '¿Guardar cambios en el usuario?',
-            text: "Asegúrate de que la información es correcta",
+            title: 'Save changes to the user?',
+            text: "Make sure the information is correct",
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, actualizar',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: 'Yes, update',
+            cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
                 this.submit();

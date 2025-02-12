@@ -6,16 +6,17 @@
         <div class="col-md-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white text-center">
-                    <h2>{{ __('Verifica tu Dirección de Correo Electrónico') }}</h2>
+                    <h2>{{ __('Verify Your Email Address') }}</h2>
                 </div>
 
                 <div class="card-body text-center">
+                    <!-- Show success message when a verification email is resent -->
                     @if (session('resent'))
                         <script>
                             Swal.fire({
                                 icon: 'success',
-                                title: '¡Correo enviado!',
-                                text: 'Se ha enviado un nuevo enlace de verificación a tu dirección de correo electrónico.',
+                                title: 'Email Sent!',
+                                text: 'A new verification link has been sent to your email address.',
                                 timer: 3000,
                                 showConfirmButton: false
                             });
@@ -23,21 +24,23 @@
                     @endif
 
                     <p class="mb-3">
-                        {{ __('Antes de continuar, por favor revisa tu correo electrónico para encontrar el enlace de verificación.') }}
+                        {{ __('Before proceeding, please check your email for the verification link.') }}
                     </p>
                     
                     <p class="mb-4">
-                        {{ __('Si no recibiste el correo electrónico') }},
+                        {{ __('If you did not receive the email') }},
                         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}" id="resendForm">
                             @csrf
+                            <!-- Button to resend the verification email -->
                             <button type="submit" class="btn btn-link p-0 m-0 align-baseline resend-btn">
-                                {{ __('haz clic aquí para solicitar otro') }}
+                                {{ __('click here to request another') }}
                             </button>.
                         </form>
                     </p>
 
+                    <!-- Button to go back to the homepage -->
                     <a href="{{ url('/') }}" class="btn btn-outline-secondary mt-3">
-                        <i class="bi bi-house-door"></i> Volver al Inicio
+                        <i class="bi bi-house-door"></i> {{ __('Back to Home') }}
                     </a>
                 </div>
             </div>
@@ -45,26 +48,28 @@
     </div>
 </div>
 
-<!-- Importar SweetAlert2 -->
+<!-- Import SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Add click event to the resend button
     document.querySelector('.resend-btn').addEventListener('click', function (event) {
-        event.preventDefault(); // Evita el envío inmediato del formulario
+        event.preventDefault(); // Prevent immediate form submission
 
+        // Display a SweetAlert2 confirmation modal before resending the verification email
         Swal.fire({
-            title: '¿Reenviar correo de verificación?',
-            text: "Se enviará un nuevo enlace a tu correo.",
+            title: 'Resend Verification Email?',
+            text: "A new link will be sent to your email.",
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, reenviar',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: 'Yes, resend it',
+            cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('resendForm').submit(); // Envía el formulario solo si el usuario confirma
+                document.getElementById('resendForm').submit(); // Submit the form only if the user confirms
             }
         });
     });

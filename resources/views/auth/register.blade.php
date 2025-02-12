@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @push('styles')
+    <!-- Linking the register.css file using Vite -->
     @vite(['resources/css/register.css'])
 @endpush
 
@@ -10,15 +11,16 @@
         <div class="col-md-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white text-center">
-                    <h2>{{ __('Registro') }}</h2>
+                    <h2>{{ __('Register') }}</h2>
                 </div>
 
                 <div class="card-body">
+                    <!-- Display a success message when registration is successful -->
                     @if (session('success'))
                         <script>
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Registro Exitoso',
+                                title: 'Registration Successful',
                                 text: '{{ session('success') }}',
                                 timer: 3000,
                                 showConfirmButton: false
@@ -29,57 +31,60 @@
                     <form method="POST" action="{{ route('register') }}" id="registroForm">
                         @csrf
 
-                        <!-- Campo de Nombre -->
+                        <!-- Name Field -->
                         <div class="mb-3">
-                            <label for="name" class="form-label">Nombre</label>
+                            <label for="name" class="form-label">Name</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                                   placeholder="Ingresa tu nombre">
+                                   placeholder="Enter your name">
                             @error('name')
+                                <!-- Error message if validation fails for name -->
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
 
-                        <!-- Campo de Correo Electrónico -->
+                        <!-- Email Field -->
                         <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <label for="email" class="form-label">Email Address</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                    name="email" value="{{ old('email') }}" required autocomplete="email"
-                                   placeholder="Ingresa tu correo electrónico">
+                                   placeholder="Enter your email address">
                             @error('email')
+                                <!-- Error message if validation fails for email -->
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
 
-                        <!-- Campo de Contraseña -->
+                        <!-- Password Field -->
                         <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
+                            <label for="password" class="form-label">Password</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                                    name="password" required autocomplete="new-password"
-                                   placeholder="Ingresa tu contraseña">
+                                   placeholder="Enter your password">
                             @error('password')
+                                <!-- Error message if validation fails for password -->
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
 
-                        <!-- Campo de Confirmación de Contraseña -->
+                        <!-- Confirm Password Field -->
                         <div class="mb-3">
-                            <label for="password-confirm" class="form-label">Confirmar Contraseña</label>
+                            <label for="password-confirm" class="form-label">Confirm Password</label>
                             <input id="password-confirm" type="password" class="form-control"
                                    name="password_confirmation" required autocomplete="new-password"
-                                   placeholder="Confirma tu contraseña">
+                                   placeholder="Confirm your password">
                         </div>
 
-                        <!-- Botón de Registro -->
+                        <!-- Register Button -->
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary" id="registroBtn">
-                                {{ __('Registrarse') }}
+                                {{ __('Register') }}
                             </button>
                         </div>
                     </form>
@@ -90,26 +95,28 @@
 </div>
 @endsection
 
-<!-- Importar SweetAlert2 -->
+<!-- Importing SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Add event listener to the registration form
     document.getElementById('registroForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Evita el envío inmediato del formulario
+        event.preventDefault(); // Prevent the immediate form submission
 
+        // Display a confirmation modal before submitting the form
         Swal.fire({
-            title: '¿Confirmar Registro?',
-            text: "Asegúrate de que los datos ingresados son correctos.",
+            title: 'Confirm Registration?',
+            text: "Make sure the entered data is correct.",
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, registrarme',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: 'Yes, register me',
+            cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                this.submit(); // Envía el formulario solo si el usuario confirma
+                this.submit(); // Submit the form only if the user confirms
             }
         });
     });
